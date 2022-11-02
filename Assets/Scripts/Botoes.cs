@@ -2,32 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class Botoes : MonoBehaviour
 {
 
-    public GameObject menuInicial, menuFases;
+    public GameObject menuInicial, menuFases, Botao;
     public void BotaoJogar()
     {
         menuInicial.SetActive(false);
         menuFases.SetActive(true);
     }
 
-    public void Fase1()
-    {
-        SceneManager.LoadScene(1);
+    public void BotaoFase(){
+        int i = int.Parse(Botao.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text);
+        Debug.Log(i);
+        SceneManager.LoadScene(i);
     }
-
-    public void Fase2()
-    {
-        SceneManager.LoadScene(2);
-    }
-
-    public void Fase3()
-    {
-        SceneManager.LoadScene(3);
-    }
-
+    
     public void VoltarMenu()
     {
         SceneManager.LoadScene(0);
@@ -38,10 +29,6 @@ public class Botoes : MonoBehaviour
         Application.Quit();
     }
 
-    public int Teste()
-    {
-        return 1;
-    }
 
 
 }
