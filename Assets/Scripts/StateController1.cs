@@ -42,7 +42,7 @@ public class StateController1 : MonoBehaviour
             for (int i = 0; i < 15; i++)
             {
                 fase.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.yellow;
-                Destroy(fase.transform.GetChild(i).GetComponent<Rotacao>());
+                //Destroy(fase.transform.GetChild(i).GetComponent<Rotacao>());
                 fase.transform.GetChild(i).localScale = new Vector3(0.75f, 0.75f, 0f);
                 fase.transform.GetChild(i).localPosition = new Vector3(fase.transform.GetChild(i).localPosition.x * 0.75f, fase.transform.GetChild(i).localPosition.y * 0.75f, 0f);
             }

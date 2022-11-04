@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1633523}
   - component: {fileID: 1633522}
-  - component: {fileID: 1633521}
   - component: {fileID: 1633524}
   m_Layer: 0
   m_Name: linha_L32
@@ -142,18 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1633521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1633522
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -165,6 +152,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -215,6 +203,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.24, y: 5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 4
@@ -256,6 +245,7 @@ GameObject:
   - component: {fileID: 30455725}
   - component: {fileID: 30455724}
   - component: {fileID: 30455723}
+  - component: {fileID: 30455726}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -307,10 +297,23 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &30455726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30455722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &402298817
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 402298820}
   - component: {fileID: 402298819}
-  - component: {fileID: 402298818}
   - component: {fileID: 402298821}
   m_Layer: 0
   m_Name: linha_L32 (3)
@@ -330,18 +332,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &402298818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402298817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &402298819
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -353,6 +343,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -403,6 +394,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10.24, y: 5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 0
@@ -417,7 +409,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -444,7 +436,6 @@ GameObject:
   - component: {fileID: 473053369}
   - component: {fileID: 473053368}
   - component: {fileID: 473053370}
-  - component: {fileID: 473053367}
   m_Layer: 0
   m_Name: linha_L32 (1)
   m_TagString: Untagged
@@ -452,18 +443,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &473053367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473053366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &473053368
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -475,6 +454,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -525,6 +505,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.24, y: -5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 14
@@ -582,6 +563,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 402298820}
   - {fileID: 936642541}
@@ -611,7 +593,7 @@ ScaleConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_ScaleAtRest: {x: 1, y: 1, z: 1}
-  m_ScaleOffset: {x: 44.156555, y: 44.156555, z: 44.156555}
+  m_ScaleOffset: {x: 44.17021, y: 44.17021, z: 44.17021}
   m_AffectScalingX: 1
   m_AffectScalingY: 1
   m_AffectScalingZ: 0
@@ -699,6 +681,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -23}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -713,7 +696,6 @@ GameObject:
   m_Component:
   - component: {fileID: 569867588}
   - component: {fileID: 569867587}
-  - component: {fileID: 569867586}
   - component: {fileID: 569867589}
   m_Layer: 0
   m_Name: resistor
@@ -722,18 +704,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &569867586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569867585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &569867587
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -745,6 +715,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -795,6 +766,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 7
@@ -948,6 +920,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2.000072}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1783276764}
   - {fileID: 1163545948}
@@ -969,7 +942,6 @@ GameObject:
   m_Component:
   - component: {fileID: 800189718}
   - component: {fileID: 800189717}
-  - component: {fileID: 800189716}
   - component: {fileID: 800189719}
   m_Layer: 0
   m_Name: linha_reta32
@@ -978,18 +950,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &800189716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800189715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &800189717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1001,6 +961,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1051,6 +1012,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.12, y: 5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 3
@@ -1091,7 +1053,6 @@ GameObject:
   m_Component:
   - component: {fileID: 935988034}
   - component: {fileID: 935988033}
-  - component: {fileID: 935988032}
   - component: {fileID: 935988035}
   m_Layer: 0
   m_Name: linha_reta32 (4)
@@ -1100,18 +1061,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &935988032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935988031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &935988033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1123,6 +1072,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1173,6 +1123,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.12, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 6
@@ -1213,7 +1164,6 @@ GameObject:
   m_Component:
   - component: {fileID: 936642541}
   - component: {fileID: 936642540}
-  - component: {fileID: 936642539}
   - component: {fileID: 936642542}
   m_Layer: 0
   m_Name: linha_reta32 (5)
@@ -1222,18 +1172,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &936642539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936642538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &936642540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1245,6 +1183,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1295,6 +1234,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.12, y: 5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 1
@@ -1335,7 +1275,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1026863324}
   - component: {fileID: 1026863323}
-  - component: {fileID: 1026863322}
   - component: {fileID: 1026863325}
   m_Layer: 0
   m_Name: linha_T32
@@ -1344,18 +1283,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1026863322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026863321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1026863323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1367,6 +1294,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1417,6 +1345,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.24, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 9
@@ -1475,6 +1404,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 628138247}
   m_RootOrder: 1
@@ -1591,7 +1521,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1243499102}
   - component: {fileID: 1243499101}
-  - component: {fileID: 1243499100}
   - component: {fileID: 1243499103}
   m_Layer: 0
   m_Name: linha_reta32 (3)
@@ -1600,18 +1529,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1243499100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1243499099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1243499101
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1623,6 +1540,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1673,6 +1591,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.12, y: -5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 11
@@ -1713,7 +1632,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1396805434}
   - component: {fileID: 1396805433}
-  - component: {fileID: 1396805432}
   - component: {fileID: 1396805435}
   m_Layer: 0
   m_Name: resistor (1)
@@ -1722,18 +1640,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1396805432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396805431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1396805433
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1745,6 +1651,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1795,6 +1702,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 12
@@ -1853,6 +1761,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1738392580}
   m_RootOrder: 0
@@ -1910,7 +1819,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1512786180}
   - component: {fileID: 1512786179}
-  - component: {fileID: 1512786178}
   - component: {fileID: 1512786181}
   m_Layer: 0
   m_Name: linha_L32 (2)
@@ -1919,18 +1827,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1512786178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512786177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1512786179
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1942,6 +1838,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1992,6 +1889,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10.24, y: -5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 10
@@ -2032,7 +1930,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1702207060}
   - component: {fileID: 1702207059}
-  - component: {fileID: 1702207058}
   - component: {fileID: 1702207061}
   m_Layer: 0
   m_Name: linha_reta32 (2)
@@ -2041,18 +1938,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1702207058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702207057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1702207059
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2064,6 +1949,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2114,6 +2000,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.12, y: -5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 13
@@ -2235,6 +2122,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1457420655}
   - {fileID: 628138247}
@@ -2260,6 +2148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuInicial: {fileID: 0}
   menuFases: {fileID: 0}
+  Botao: {fileID: 0}
 --- !u!1 &1775790659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,7 +2159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1775790663}
   - component: {fileID: 1775790662}
-  - component: {fileID: 1775790661}
   - component: {fileID: 1775790660}
   m_Layer: 0
   m_Name: Fonte_CC
@@ -2305,18 +2193,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0
---- !u!114 &1775790661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775790659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1775790662
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2328,6 +2204,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2378,6 +2255,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 5.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 2
@@ -2410,6 +2288,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 628138247}
   m_RootOrder: 0
@@ -2526,7 +2405,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1861321706}
   - component: {fileID: 1861321705}
-  - component: {fileID: 1861321704}
   - component: {fileID: 1861321707}
   m_Layer: 0
   m_Name: linha_T32 (1)
@@ -2535,18 +2413,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1861321704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861321703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1861321705
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2558,6 +2424,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2608,6 +2475,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10.24, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 5
@@ -2648,7 +2516,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1864805480}
   - component: {fileID: 1864805481}
-  - component: {fileID: 1864805482}
   m_Layer: 0
   m_Name: StateController
   m_TagString: Untagged
@@ -2666,6 +2533,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.1803322, y: -0.12055579, z: 47.17567}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -2684,18 +2552,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fase: {fileID: 507957931}
   botao: {fileID: 628138243}
---- !u!114 &1864805482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864805479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2070941741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2562,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2070941744}
   - component: {fileID: 2070941743}
-  - component: {fileID: 2070941742}
   - component: {fileID: 2070941745}
   m_Layer: 0
   m_Name: linha_reta32 (1)
@@ -2715,18 +2570,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2070941742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070941741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2cda37d84e955e469bdcbd34d97e96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &2070941743
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2738,6 +2581,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2788,6 +2632,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.12, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 507957932}
   m_RootOrder: 8
