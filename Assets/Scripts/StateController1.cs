@@ -8,7 +8,7 @@ public class StateController1 : MonoBehaviour
     // Start is called before the first frame update
     private bool b1 = false;
     private bool b2 = true;
-    public GameObject fase, botao;
+    public GameObject fase, botao, eventSystem;
     void Start()
     {
 
@@ -49,6 +49,7 @@ public class StateController1 : MonoBehaviour
             b2 = false;
 
             botao.SetActive(true);
+            Destroy(eventSystem.GetComponent<Rotacao>());
 
         }
 
