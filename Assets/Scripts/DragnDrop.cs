@@ -45,6 +45,8 @@ public class DragnDrop : MonoBehaviour
         }
     }
 
+    
+
     private void OnMouseOver()
     {
         rend = GetComponent<SpriteRenderer>();

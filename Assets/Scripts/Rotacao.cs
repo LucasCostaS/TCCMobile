@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,7 +9,7 @@ public class Rotacao : MonoBehaviour
     void OnEnable()
     {
         //Fetch the current EventSystem. Make sure your Scene has one.
-        m_EventSystem = EventSystem.current;
+       m_EventSystem = EventSystem.current;
     }
 
     Vector3 touchPosWorld;
@@ -40,7 +37,7 @@ public class Rotacao : MonoBehaviour
                 GameObject touchedObject = hitInformation.transform.gameObject;
                 //touchedObject should be the object someone touched.
                 touchedObject.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                Debug.Log(touchedObject.transform.eulerAngles.z);
+
             }
         }
     }
