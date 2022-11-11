@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Lixo
+  - LinhaT
+  - LinhaL
+  - Fonte
+  - Resistor
+  - LinhaReta
+  - LinhaTPrefab
+  - LinhaLPrefab
+  - FontePrefab
+  - ResistorPrefab
+  - LinhaRetaPrefab
+  - Pecas
   layers:
   - Default
   - TransparentFX
