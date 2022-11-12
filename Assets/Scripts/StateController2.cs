@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class StateController2 : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     public bool spawn;
     private Vector2 lugar = new Vector2(0.0f, 0.0f);
     private Collider2D vet, vet1;
@@ -15,14 +15,13 @@ public class StateController2 : MonoBehaviour
     private Vector2[] posicao = new Vector2[16];
     private bool[] posicaoCorreta = new bool[16];
     public GameObject vitoria, sombra, pecas, stock;
-    // Start is called before the first frame update
+
     void Start()
     {
         spawn = true;
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 

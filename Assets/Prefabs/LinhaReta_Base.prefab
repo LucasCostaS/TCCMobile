@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3364539518665632424}
   - component: {fileID: 7906487139118708541}
   - component: {fileID: 539598231232625093}
-  - component: {fileID: 4554261841387783298}
   m_Layer: 0
   m_Name: linha_reta32 (1)
   m_TagString: LinhaRetaPrefab
@@ -112,18 +111,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 1.1390021}
   m_EdgeRadius: 0
---- !u!114 &4554261841387783298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5216288909397420936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0f909333a3f0a44483b7fe362ced0a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7525239256244594301
 GameObject:
   m_ObjectHideFlags: 0

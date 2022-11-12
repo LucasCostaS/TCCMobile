@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 1514684749754249659}
   - component: {fileID: 3373187179208578}
   - component: {fileID: 6917114368646873301}
-  - component: {fileID: 8836504434787216805}
   m_Layer: 0
   m_Name: Fonte_CC (1)
   m_TagString: FontePrefab
@@ -144,15 +143,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 3.5464242}
   m_EdgeRadius: 0
---- !u!114 &8836504434787216805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6349492297152303901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0f909333a3f0a44483b7fe362ced0a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
