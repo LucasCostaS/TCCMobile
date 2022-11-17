@@ -45,50 +45,36 @@ public class DragnDrop : MonoBehaviour
         }
     }
 
-    
-
-    private void OnMouseOver()
-    {
-        rend = GetComponent<SpriteRenderer>();
-        rend.color = Color.yellow;
-
-    }
-
-    private void OnMouseExit()
-    {
-        rend.color = Color.black;
-    }
-
     void OnMouseDown()
     {
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
     }
 
-    private void OnMouseDrag()
-    {
-        Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
-        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
-        transform.position = cursorPosition;
-        if (Physics2D.IsTouching(colisorLixo, gameObject.GetComponent<BoxCollider2D>()))
-        {
-            if (trava == false)
-            {
-                escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
-                lixo.transform.localScale = new Vector3(lixo.transform.localScale.x * 1.2f, lixo.transform.localScale.y * 1.2f, 1f);
-                trava = true;
-            }
+    //private void OnMouseDrag()
+    //{
+    //    Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
+    //    Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
+    //    transform.position = cursorPosition;
+    //    if (Physics2D.IsTouching(colisorLixo, gameObject.GetComponent<BoxCollider2D>()))
+    //    {
+    //        if (trava == false)
+    //        {
+    //            escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
+    //            lixo.transform.localScale = new Vector3(lixo.transform.localScale.x * 1.2f, lixo.transform.localScale.y * 1.2f, 1f);
+    //            trava = true;
+    //        }
 
 
-        }
-        else
-        {
-            lixo.transform.localScale = escalaAtual;
-            escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
-            trava = false;
-        }
+    //    }
+    //    else
+    //    {
+    //        lixo.transform.localScale = escalaAtual;
+    //        escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
+    //        trava = false;
+    //    }
 
-    }
+    //}
 
 
     private void OnMouseUp()

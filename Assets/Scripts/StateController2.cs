@@ -19,7 +19,6 @@ public class StateController2 : MonoBehaviour
     void Start()
     {
         spawn = true;
-
     }
 
     void Update()
@@ -28,15 +27,11 @@ public class StateController2 : MonoBehaviour
         setarSnap();
 
         vet = Physics2D.OverlapCircle(lugar, 0.1f);
-        if (vet == null)
-        {
-            spawn = true;
-        }
+        spawn = (vet == null);
 
         checarPosicao();
 
         checarVitoria();
-
 
     }
 
@@ -65,166 +60,52 @@ public class StateController2 : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    if (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90);
                     break;
                 case 1:
-
-                    if (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 180))
-                    {
-
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 180));
                     break;
                 case 2:
-                    if (vet1 != null && vet1.tag == "LinhaTPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 180)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaTPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 180);
                     break;
                 case 3:
-                    if (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 180)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 180);
                     break;
                 case 4:
-                    if (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270))
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270));
                     break;
                 case 5:
-                    if (vet1 == null)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 == null);
                     break;
                 case 6:
-                    if (vet1 != null && vet1.tag == "ResistorPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                     posicaoCorreta[i] = (vet1 != null && vet1.tag == "ResistorPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90);                  
                     break;
                 case 7:
-                    if (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270))
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270));
                     break;
                 case 8:
-                    if (vet1 != null && vet1.tag == "LinhaTPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaTPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90);
                     break;
                 case 9:
-                    if (vet1 != null && vet1.tag == "FontePrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "FontePrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0);
                     break;
                 case 10:
-                    if (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270);
                     break;
                 case 11:
-                    if (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270))
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 90 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270));
                     break;
                 case 12:
-                    if (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0);
                     break;
                 case 13:
-                    if (vet1 != null && vet1.tag == "ResistorPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "ResistorPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0);
                     break;
                 case 14:
-                    if (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 180))
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaRetaPrefab" && (Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 0 || Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 180));
                     break;
                 case 15:
-                    if (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270)
-                    {
-                        posicaoCorreta[i] = true;
-                    }
-                    else
-                    {
-                        posicaoCorreta[i] = false;
-                    }
+                    posicaoCorreta[i] = (vet1 != null && vet1.tag == "LinhaLPrefab" && Math.Ceiling(vet1.gameObject.transform.eulerAngles.z) == 270);
                     break;
                 default:
                     break;
@@ -257,7 +138,6 @@ public class StateController2 : MonoBehaviour
 
             }
 
-            //mudar as cores do circuito
             spawn = false;
         }
     }

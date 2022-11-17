@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,8 +16,11 @@ public class Eventos2 : MonoBehaviour
     private GameObject objeto = null;
     private string tipoToque;
     Vector2 touchPosWorld2D;
-    public GameObject state;
+    public GameObject state, prefab;
+    private GameObject pai;
     private StateController2 controlador;
+    private DragnDropStock Stock;
+    private Variables var;
 
     void OnEnable()
     {
@@ -27,7 +31,6 @@ public class Eventos2 : MonoBehaviour
     void Update()
     {
         RecebeToque();
-
     }
 
     private void RecebeToque()
@@ -64,29 +67,22 @@ public class Eventos2 : MonoBehaviour
             if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
             {
                 dragging = false;
+                if (duracaoToque < 0.2f && objeto.transform.parent.name == "Stock")
+                {
+                    SpawnPeca();
+                    return;
+                }
+
                 if (duracaoToque < 0.2f && objeto.transform.parent.transform.parent.name == "pecas")
                 {
                     Rotacao();
                 }
 
-                if (duracaoToque < 0.2f && objeto.transform.parent.name == "Stock")
-                {
-                    SpawnPeca();
-                }
-
                 duracaoToque = 0.0f;
-               // objeto = null;
-
             }
 
         }
     }
-    
-
-            
-
-    //We now raycast with this information. If we have hit something we can process it.
-    
     private void SetarObjeto()
     {
 
@@ -110,6 +106,9 @@ public class Eventos2 : MonoBehaviour
     {
         if (controlador.spawn == true)
         {
+            Stock = objeto.GetComponent<DragnDropStock>();
+            prefab = Stock.prefab;
+            pai = Stock.pai;
             Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity, pai.transform);
             controlador.spawn = false;
         }
