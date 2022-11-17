@@ -8,10 +8,10 @@ public class Eventos2 : MonoBehaviour
 {
 
     EventSystem m_EventSystem;
-    private Touch touch;
+    private Touch toque;
     Vector3 touchPosWorld;
     private Vector3 offset;
-    private bool dragging;
+    private bool dragging, tocando, inicioToque, fimToque, movimentoToque, stock, pecas;
     private float duracaoToque;
     private GameObject objeto = null;
     private string tipoToque;
@@ -19,68 +19,88 @@ public class Eventos2 : MonoBehaviour
     public GameObject state, prefab;
     private GameObject pai;
     private StateController2 controlador;
-    private DragnDropStock Stock;
+    private DragnDropStock dragnDrop;
     private Variables var;
 
     void OnEnable()
     {
         m_EventSystem = EventSystem.current;
         controlador = state.GetComponent<StateController2>();
+        
     }
 
     void Update()
     {
-        RecebeToque();
+        tocando = (Input.touchCount > 0);
+        if (tocando)
+        {
+            ReceberToque();
+            AcoesDoToque();
+        }
+            
     }
 
-    private void RecebeToque()
+    private void ReceberToque()
     {
-        if (Input.touchCount > 0)
+        toque = Input.GetTouch(0);
+        inicioToque = (toque.phase == TouchPhase.Began);
+        fimToque = (toque.phase == TouchPhase.Ended || toque.phase == TouchPhase.Canceled);
+        movimentoToque = (toque.phase == TouchPhase.Moved);
+    }
+
+    private void AcoesDoToque()
+    {
+        duracaoToque += Time.deltaTime;
+
+        InicioDeToque();
+
+        ToqueDrag();
+
+        FimDeToque();
+    }
+
+    private void InicioDeToque()
+    {
+        if (inicioToque)
         {
-            duracaoToque += Time.deltaTime;
-            touch = Input.GetTouch(0);
+            PegarPosicaoNoMundo();
 
-            if (touch.phase == TouchPhase.Began)
+            SetarObjeto();
+
+            if (!stock)
             {
-                touchPosWorld = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
-
-                SetarObjeto();
-
-                if (objeto.transform.parent.name != "Stock")
-                {
-                touchPosWorld = new Vector3(touch.position.x, touch.position.y, 0f);
-                touchPosWorld = Camera.main.ScreenToWorldPoint(touchPosWorld);
+                PegarPosicaoNoMundo();
                 offset = objeto.transform.position - touchPosWorld;
                 dragging = true;
-                }
-                
             }
+        }
+    }
 
-            if (dragging && touch.phase == TouchPhase.Moved)
+    private void FimDeToque()
+    {
+        if (fimToque)
+        {
+            dragging = false;
+            if (duracaoToque < 0.2f && stock)
             {
-                touchPosWorld = new Vector3(touch.position.x, touch.position.y, 0f);
-                touchPosWorld = Camera.main.ScreenToWorldPoint(touchPosWorld);
-                objeto.transform.position = touchPosWorld + offset;
+                SpawnPeca();
+                return;
             }
 
-            if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+            if (duracaoToque < 0.2f && pecas)
             {
-                dragging = false;
-                if (duracaoToque < 0.2f && objeto.transform.parent.name == "Stock")
-                {
-                    SpawnPeca();
-                    return;
-                }
-
-                if (duracaoToque < 0.2f && objeto.transform.parent.transform.parent.name == "pecas")
-                {
-                    Rotacao();
-                }
-
-                duracaoToque = 0.0f;
+                Rotacao();
             }
+            duracaoToque = 0.0f;
+        }
+    }
 
+    private void ToqueDrag()
+    {
+        if (dragging && movimentoToque)
+        {
+            PegarPosicaoNoMundo();
+            objeto.transform.position = touchPosWorld + offset;
         }
     }
     private void SetarObjeto()
@@ -91,12 +111,13 @@ public class Eventos2 : MonoBehaviour
         {
             objeto = hitInformation.transform.gameObject;
         }
-        
+        stock = (objeto.transform.parent.name == "Stock");
+        pecas = (objeto.transform.parent.transform.parent.name == "pecas");
     }
 
     private void Rotacao()
     {
-       
+
         objeto.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
         objeto = null;
         duracaoToque = 0.0f;
@@ -106,11 +127,17 @@ public class Eventos2 : MonoBehaviour
     {
         if (controlador.spawn == true)
         {
-            Stock = objeto.GetComponent<DragnDropStock>();
-            prefab = Stock.prefab;
-            pai = Stock.pai;
+            dragnDrop = objeto.GetComponent<DragnDropStock>();
+            prefab = dragnDrop.prefab;
+            pai = dragnDrop.pai;
             Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity, pai.transform);
             controlador.spawn = false;
         }
+    }
+
+    private void PegarPosicaoNoMundo()
+    {
+        touchPosWorld = Camera.main.ScreenToWorldPoint(new Vector3(toque.position.x, toque.position.y, 0f));
+        touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
     }
 }
