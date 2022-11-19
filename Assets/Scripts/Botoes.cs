@@ -15,7 +15,6 @@ public class Botoes : MonoBehaviour
 
     public void BotaoFase(){
         int i = int.Parse(Botao.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text);
-        Debug.Log(i);
         SceneManager.LoadScene(i);
     }
     
