@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -593,7 +594,7 @@ ScaleConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_ScaleAtRest: {x: 1, y: 1, z: 1}
-  m_ScaleOffset: {x: 44.17021, y: 44.17021, z: 44.17021}
+  m_ScaleOffset: {x: 39.19621, y: 39.19621, z: 39.19621}
   m_AffectScalingX: 1
   m_AffectScalingY: 1
   m_AffectScalingZ: 0
@@ -809,6 +810,8 @@ GameObject:
   - component: {fileID: 628138246}
   - component: {fileID: 628138245}
   - component: {fileID: 628138244}
+  - component: {fileID: 628138249}
+  - component: {fileID: 628138248}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -859,19 +862,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 628138245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1738392581}
-        m_TargetAssemblyTypeName: Botoes, Assembly-CSharp
-        m_MethodName: VoltarMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &628138245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,6 +923,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -402}
   m_SizeDelta: {x: 240.82, y: 72.22}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &628138248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628138243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81473d268db33fc4d87bb62ca992bb53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuInicial: {fileID: 0}
+  menuFases: {fileID: 0}
+  Botao: {fileID: 0}
+--- !u!114 &628138249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628138243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 628138248}
+          m_TargetAssemblyTypeName: Botoes, Assembly-CSharp
+          m_MethodName: VoltarMenu
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &800189715
 GameObject:
   m_ObjectHideFlags: 0

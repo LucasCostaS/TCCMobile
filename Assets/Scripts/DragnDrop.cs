@@ -30,49 +30,33 @@ public class DragnDrop : MonoBehaviour
 
     void Start()
     {
-        pecas = gameObject.transform.parent.parent.gameObject;
-        temp = pecas.GetComponent<PosicaoSnap>();
-        aux = Physics2D.OverlapBoxAll(new Vector2(0f, 0f), new Vector2(100f, 100f), 0f);
-        foreach (var col in aux)
-        {
-            if (col.gameObject.tag == "Lixo")
-            {
-                colisorLixo = col;
-                lixo = colisorLixo.gameObject;
-                escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
-            }
+        //pecas = gameObject.transform.parent.parent.gameObject;
+        //temp = pecas.GetComponent<PosicaoSnap>();
+        //aux = Physics2D.OverlapBoxAll(new Vector2(0f, 0f), new Vector2(100f, 100f), 0f);
+        //foreach (var col in aux)
+        //{
+        //    if (col.gameObject.tag == "Lixo")
+        //    {
+        //        colisorLixo = col;
+        //        lixo = colisorLixo.gameObject;
+        //        escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
+        //    }
 
-        }
+        //}
     }
 
-    void OnMouseDown()
-    {
-        screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
-    }
+    //void OnMouseDown()
+    //{
+    //    screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+    //    offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+    //}
 
     //private void OnMouseDrag()
     //{
     //    Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
     //    Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
     //    transform.position = cursorPosition;
-    //    if (Physics2D.IsTouching(colisorLixo, gameObject.GetComponent<BoxCollider2D>()))
-    //    {
-    //        if (trava == false)
-    //        {
-    //            escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
-    //            lixo.transform.localScale = new Vector3(lixo.transform.localScale.x * 1.2f, lixo.transform.localScale.y * 1.2f, 1f);
-    //            trava = true;
-    //        }
 
-
-    //    }
-    //    else
-    //    {
-    //        lixo.transform.localScale = escalaAtual;
-    //        escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
-    //        trava = false;
-    //    }
 
     //}
 

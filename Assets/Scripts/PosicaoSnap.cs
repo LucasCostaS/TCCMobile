@@ -7,16 +7,10 @@ public class PosicaoSnap : MonoBehaviour
 
     public float[] gradeX = new float[4];
     public float[] gradeY = new float[4];
-    private Vector2[] posicao = new Vector2[16];
+    public Vector2[] posicao = new Vector2[16];
     public GameObject sombra;
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
         setarSnap();
     }
@@ -32,7 +26,7 @@ public class PosicaoSnap : MonoBehaviour
         {
             for (int j = 0; j < gradeY.Length; j++)
             {
-                posicao[j + (4 * i)] = new Vector2(gradeX[j], gradeY[gradeY.Length - (1 + i)]);
+                posicao[j + (4 * i)] = new Vector2(gradeX[j], gradeY[i]);
 
             }
         }
