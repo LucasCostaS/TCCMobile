@@ -119,7 +119,7 @@ public class StateController2 : MonoBehaviour
             int k = pecas.transform.childCount;
             for (int i = 0; i < k; i++)
             {
-                Destroy(pecas.transform.GetChild(i).GetChild(0).GetComponent<DragnDrop>());
+                
                 pecas.transform.GetChild(i).GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
                 pecas.transform.GetChild(i).GetChild(0).localScale = new Vector3(0.5f, 0.5f, 0f);
                 pecas.transform.GetChild(i).GetChild(0).localPosition = new Vector3(pecas.transform.GetChild(i).GetChild(0).localPosition.x * 0.5f, pecas.transform.GetChild(i).GetChild(0).localPosition.y * 0.5f, 0f);
