@@ -7,16 +7,21 @@ using TMPro;
 public class StateController3 : MonoBehaviour
 {
 
-    public GameObject r1, r2, r3, r4, prefab1, pecas, vitoria;
-    private float movX1, movY1, rotZ, movX2, movX3, movY3, newFPS;
+    public GameObject r1, r2, r3, r4, prefab1, pecas, vitoria, enunciado, btnDesfazer;
+    private float movX1, movY1, movX2, movX3, movY3, newFPS;
+    private Resistores3 resistor1, resistor2, resistor3, resistor4;
     private bool teste1, teste2, teste3, criar1, parte1, parte2, anim;
     public bool click;
 
-    private float fps = 90f;
+    private float fps = 60f;
 
     // Start is called before the first frame update
     void Start()
     {
+        pecas.SetActive(false);
+        vitoria.SetActive(false);
+        btnDesfazer.SetActive(false);
+        enunciado.SetActive(true);
         movX1 = (r4.transform.localPosition.x - r3.transform.localPosition.x);
         movY1 = (r4.transform.localPosition.y - r3.transform.localPosition.y);
         movX2 = (r2.transform.localPosition.x - r4.transform.localPosition.x);
@@ -28,6 +33,18 @@ public class StateController3 : MonoBehaviour
         anim = true;
         click = true;
         newFPS = 1.0f;
+        resistor1 = r1.GetComponent<Resistores3>();
+        resistor2 = r2.GetComponent<Resistores3>();
+        resistor3 = r3.GetComponent<Resistores3>();
+        resistor4 = r4.GetComponent<Resistores3>();
+        resistor1.transform.GetChild(0).gameObject.SetActive(false);
+        resistor1.transform.GetChild(1).gameObject.SetActive(false);
+        resistor2.transform.GetChild(0).gameObject.SetActive(false);
+        resistor2.transform.GetChild(1).gameObject.SetActive(false);
+        resistor3.transform.GetChild(0).gameObject.SetActive(false);
+        resistor3.transform.GetChild(1).gameObject.SetActive(false);
+        resistor4.transform.GetChild(0).gameObject.SetActive(false);
+        resistor4.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -36,43 +53,47 @@ public class StateController3 : MonoBehaviour
         newFPS = 1.0f / Time.smoothDeltaTime;
         if (newFPS != float.PositiveInfinity)
             fps = Mathf.Lerp(fps, newFPS, 0.005f);
-        //UnityEngine.Debug.Log((fps));
-
-        if (r4 != null)
+        if (enunciado.active == false)
         {
-            equivalente1();
+            if (r4 != null)
+            {
+                equivalente1();
+            }
+            if (r3 != null)
+            {
+                equivalente2();
+            }
+            if (r2 != null)
+            {
+                equivalente3();
+            }
+            if (r2 == null)
+            {
+                checarVitoria();
+            }
         }
-        if (r3 != null)
-        {
-            equivalente2();
-        }
-        if (r2 != null)
-        {
-            equivalente3();
-        }
-        if (r2 == null)
-        {
-            checarVitoria();
-        }
+        
     }
 
     private void equivalente1()
     {
-        if (r3.GetComponent<Resistores3>().modificado == true && r4.GetComponent<Resistores3>().modificado == true && parte1 == true)
+        if (resistor3.modificado == true && resistor4.modificado == true && parte1 == true)
         {
             if (criar1)
             {
                 Instantiate(prefab1, r3.transform.position, Quaternion.identity, r3.transform.parent);
                 criar1 = false;
             }
+
             teste1 = r3.transform.localPosition.y > r4.transform.localPosition.y;
-            teste3 = !teste2 && r3.transform.localPosition.x <= r4.transform.localPosition.x;
             teste2 = !teste1 && r3.transform.rotation.eulerAngles.z < 90;
+            teste3 = !teste2 && r3.transform.localPosition.x <= r4.transform.localPosition.x;
+            
 
             if (teste1)
                 r3.transform.Translate(0f, (movY1 / fps), 0f, Space.World);
             if (teste2)
-                r3.transform.Rotate(0f, 0f, 0.5f);
+                r3.transform.Rotate(0f, 0f,(90 / fps));
             if (teste3)
                 r3.transform.Translate((movX1 / fps), 0f, 0f, Space.World);
 
@@ -80,12 +101,13 @@ public class StateController3 : MonoBehaviour
             if (!teste1 && !teste2 && !teste3)
             {
                 r3.transform.localPosition = r4.transform.localPosition;
-                r3.GetComponent<Resistores3>().resistencia = r3.GetComponent<Resistores3>().resistencia + r4.GetComponent<Resistores3>().resistencia;
+                r3.transform.localRotation = r4.transform.localRotation;
+                resistor3.resistencia = resistor3.resistencia + resistor4.resistencia;
                 r4.SetActive(false);
                 r4 = null;
-                r3.GetComponent<Resistores3>().reduzido = true;
+                resistor3.reduzido = true;
                 parte1 = false;
-                //r3.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(r3.GetComponent<Resistores3>().resistencia.ToString());
+                //r3.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(resistor3.resistencia.ToString());
             }
 
         }
@@ -93,7 +115,7 @@ public class StateController3 : MonoBehaviour
 
     private void equivalente2()
     {
-        if (parte1 == false && r2.GetComponent<Resistores3>().modificado == true)
+        if (parte1 == false && resistor2.modificado == true)
         {
             GameObject[] linha = new GameObject[] { r3, pecas.transform.GetChild(6).gameObject, pecas.transform.GetChild(9).gameObject, pecas.transform.GetChild(19).gameObject };
             teste1 = r3.transform.localPosition.x > r2.transform.localPosition.x;
@@ -117,9 +139,9 @@ public class StateController3 : MonoBehaviour
                 {
                     item.transform.localPosition = new Vector3(r2.transform.localPosition.x, item.transform.localPosition.y, 0f);
                 }
-                r2.GetComponent<Resistores3>().resistencia = 1 / ((1 / r3.GetComponent<Resistores3>().resistencia) + (1 / r2.GetComponent<Resistores3>().resistencia));
+                resistor2.resistencia = 1 / ((1 / resistor3.resistencia) + (1 / resistor2.resistencia));
                 r3.SetActive(false);
-                r2.GetComponent<Resistores3>().reduzido = true;
+                resistor2.reduzido = true;
                 r3 = null;
                 parte2 = false;
                 criar1 = true;
@@ -130,7 +152,7 @@ public class StateController3 : MonoBehaviour
 
     private void equivalente3()
     {
-        if (r1.GetComponent<Resistores3>().modificado == true && r2.GetComponent<Resistores3>().modificado == true && parte2 == false)
+        if (resistor1.modificado == true && resistor2.modificado == true && parte2 == false)
         {
             if (criar1)
             {
@@ -144,7 +166,7 @@ public class StateController3 : MonoBehaviour
             if (teste1)
                 r1.transform.Translate(0f, movY3 / fps, 0f, Space.World);
             if (teste2)
-                r1.transform.Rotate(0f, 0f, 0.5f);
+                r1.transform.Rotate(0f, 0f, (90 / fps));
             if (teste3)
                 r1.transform.Translate(movX3 / fps, 0f, 0f, Space.World);
 
@@ -152,12 +174,12 @@ public class StateController3 : MonoBehaviour
             if (!teste1 && !teste2 && !teste3)
             {
                 r1.transform.localPosition = r2.transform.localPosition;
-                r1.GetComponent<Resistores3>().resistencia = r1.GetComponent<Resistores3>().resistencia + r2.GetComponent<Resistores3>().resistencia;
+                resistor1.resistencia = resistor1.resistencia + resistor2.resistencia;
                 r2.SetActive(false);
                 r2 = null;
-                r1.GetComponent<Resistores3>().reduzido = true;
+                resistor1.reduzido = true;
                 //parte1 = false;
-                //r3.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(r3.GetComponent<Resistores3>().resistencia.ToString());
+                //r3.transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().SetText(resistor3.resistencia.ToString());
             }
 
         }
@@ -165,7 +187,7 @@ public class StateController3 : MonoBehaviour
 
     private void checarVitoria()
     {
-        if (r1.GetComponent<Resistores3>().resistencia == 3)
+        if (resistor1.resistencia == 3)
         {
             vitoria.SetActive(true);
             if (anim)
@@ -197,9 +219,9 @@ public class StateController3 : MonoBehaviour
             r2.SetActive(true);
             r1.transform.localPosition = pecas.transform.GetChild(pecas.transform.childCount - 1).transform.localPosition;
             r1.transform.Rotate(0f, 0f, -90f);
-            r1.GetComponent<Resistores3>().resistencia = r1.GetComponent<Resistores3>().resistencia - r2.GetComponent<Resistores3>().resistencia;
-            r1.GetComponent<Resistores3>().reduzido = false;
-            r1.GetComponent<Resistores3>().modificado = false;
+            resistor1.resistencia = resistor1.resistencia - resistor2.resistencia;
+            resistor1.reduzido = false;
+            resistor1.modificado = false;
             Destroy(pecas.transform.GetChild(pecas.transform.childCount - 1).gameObject);
             criar1 = true;
             return;
@@ -209,10 +231,10 @@ public class StateController3 : MonoBehaviour
         {
             r3 = pecas.transform.GetChild(5).gameObject;
             GameObject[] linha = new GameObject[] { r3, pecas.transform.GetChild(6).gameObject, pecas.transform.GetChild(9).gameObject, pecas.transform.GetChild(19).gameObject };
-            r2.GetComponent<Resistores3>().resistencia = (r2.GetComponent<Resistores3>().resistencia * r3.GetComponent<Resistores3>().resistencia) / (r2.GetComponent<Resistores3>().resistencia + r3.GetComponent<Resistores3>().resistencia);
+            resistor2.resistencia = (resistor2.resistencia * resistor3.resistencia) / (resistor2.resistencia + resistor3.resistencia);
             r3.SetActive(true);
-            r2.GetComponent<Resistores3>().reduzido = false;
-            r2.GetComponent<Resistores3>().modificado = false;
+            resistor2.reduzido = false;
+            resistor2.modificado = false;
             pecas.transform.GetChild(3).gameObject.SetActive(true);
             pecas.transform.GetChild(4).gameObject.SetActive(true);
             pecas.transform.GetChild(20).gameObject.SetActive(true);
@@ -236,12 +258,12 @@ public class StateController3 : MonoBehaviour
             r3.transform.localPosition = pecas.transform.GetChild(pecas.transform.childCount - 1).localPosition;
             r3.transform.Rotate(0f, 0f, -90f);
             Destroy(pecas.transform.GetChild(pecas.transform.childCount - 1).gameObject);
-            r3.GetComponent<Resistores3>().resistencia = r3.GetComponent<Resistores3>().resistencia - r4.GetComponent<Resistores3>().resistencia;
+            resistor3.resistencia = resistor3.resistencia - resistor4.resistencia;
             r4.SetActive(true);
-            r3.GetComponent<Resistores3>().reduzido = false;
-            r3.GetComponent<Resistores3>().modificado = false;
-            r4.GetComponent<Resistores3>().reduzido = false;
-            r4.GetComponent<Resistores3>().modificado = false;
+            resistor3.reduzido = false;
+            resistor3.modificado = false;
+            resistor4.reduzido = false;
+            resistor4.modificado = false;
             parte1 = true;
             criar1 = true;
             return;
