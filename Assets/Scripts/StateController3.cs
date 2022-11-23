@@ -78,7 +78,7 @@ public class StateController3 : MonoBehaviour
             if (teste1)
                 r3.transform.Translate(0f, (movY1 / fps), 0f, Space.World);
             if (teste2)
-                r3.transform.Rotate(0f, 0f,(fps / 0.5f));
+                r3.transform.Rotate(0f, 0f,(90 / fps));
             if (teste3)
                 r3.transform.Translate((movX1 / fps), 0f, 0f, Space.World);
 
@@ -86,6 +86,7 @@ public class StateController3 : MonoBehaviour
             if (!teste1 && !teste2 && !teste3)
             {
                 r3.transform.localPosition = r4.transform.localPosition;
+               // r3.transform.localRotation = r4.transform.localRotation;
                 resistor3.resistencia = resistor3.resistencia + resistor4.resistencia;
                 r4.SetActive(false);
                 r4 = null;
@@ -150,7 +151,7 @@ public class StateController3 : MonoBehaviour
             if (teste1)
                 r1.transform.Translate(0f, movY3 / fps, 0f, Space.World);
             if (teste2)
-                r1.transform.Rotate(0f, 0f, 0.5f);
+                r1.transform.Rotate(0f, 0f, (90 / fps));
             if (teste3)
                 r1.transform.Translate(movX3 / fps, 0f, 0f, Space.World);
 

@@ -14,6 +14,8 @@ public class Eventos3 : MonoBehaviour
     public GameObject enunciado;
     public GameObject telaCircuito;
     public GameObject btnDesfazer;
+    private GameObject objeto;
+    private GameObject inputTexto;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -34,8 +36,10 @@ public class Eventos3 : MonoBehaviour
 
     private void AcoesDoToque()
     {
-        InicioDeToque();
-        FimDeToque();
+        if (inicioToque)
+            InicioDeToque();
+        if (fimToque)
+            FimDeToque();
     }
 
     private void DesativarEnunciado()
@@ -47,12 +51,12 @@ public class Eventos3 : MonoBehaviour
 
     private void InicioDeToque()
     {
-        if (inicioToque)
-        {
-            PegarPosicaoNoMundo();
 
-            SetarObjeto();
-        }
+        PegarPosicaoNoMundo();
+
+        SetarObjeto();
+
+
     }
 
     private void ReceberToque()
@@ -70,7 +74,7 @@ public class Eventos3 : MonoBehaviour
         {
             resistor = hitInformation.transform.gameObject;
         }
-
+        Debug.Log(resistor);
         //if (objeto != null)
         //{
         //    stock = (objeto.transform.parent.name == "Stock");
@@ -89,33 +93,42 @@ public class Eventos3 : MonoBehaviour
     private void FimDeToque()
     {
 
-        if (fimToque)
+        if (enunciado.activeSelf)
         {
-            if (resistor != null)
+            DesativarEnunciado();
+            resistor = null;
+            return;
+        }
+
+        if (resistor != null)
+        {
+            bool reduzido = resistor.GetComponent<Resistores3>().reduzido;
+
+            if (reduzido == false && controller.GetComponent<StateController3>().click == true)
             {
-                bool reduzido = resistor.GetComponent<Resistores3>().reduzido;
 
-                if (reduzido == false && controller.GetComponent<StateController3>().click == true)
-                {
-                    resistor.transform.GetChild(0).gameObject.SetActive(true);
-                    controller.GetComponent<StateController3>().click = false;
-                }
+                inputTexto = resistor.transform.GetChild(0).gameObject;
+                inputTexto.SetActive(true);
+                controller.GetComponent<StateController3>().click = false;
+            }
 
-                //GetComponent<SpriteRenderer>().color = Color.yellow;
-                if (reduzido == true)
-                {
-                    resistor.transform.GetChild(1).gameObject.SetActive(true);
-
-                }
-
+            //GetComponent<SpriteRenderer>().color = Color.yellow;
+            if (reduzido == true)
+            {
+                inputTexto = resistor.transform.GetChild(1).gameObject;
+                inputTexto.SetActive(true);
                 
             }
-            if (enunciado.activeSelf)
-            {
-                DesativarEnunciado();
-            }
-            resistor = null;
-
         }
+
+        //if (!(inputTexto.transform.parent.GetComponent<Resistores3>().caixaAtiva))
+        //{
+        //    inputTexto.SetActive(false);
+        //    controller.GetComponent<StateController3>().click = true;
+        //}
+            
+        resistor = null;
+
     }
+
 }
