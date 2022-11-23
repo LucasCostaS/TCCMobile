@@ -7,8 +7,8 @@ using TMPro;
 public class StateController3 : MonoBehaviour
 {
 
-    public GameObject r1, r2, r3, r4, prefab1, pecas, vitoria;
-    private float movX1, movY1, rotZ, movX2, movX3, movY3, newFPS;
+    public GameObject r1, r2, r3, r4, prefab1, pecas, vitoria, enunciado, btnDesfazer;
+    private float movX1, movY1, movX2, movX3, movY3, newFPS;
     private Resistores3 resistor1, resistor2, resistor3, resistor4;
     private bool teste1, teste2, teste3, criar1, parte1, parte2, anim;
     public bool click;
@@ -18,6 +18,10 @@ public class StateController3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pecas.SetActive(false);
+        vitoria.SetActive(false);
+        btnDesfazer.SetActive(false);
+        enunciado.SetActive(true);
         movX1 = (r4.transform.localPosition.x - r3.transform.localPosition.x);
         movY1 = (r4.transform.localPosition.y - r3.transform.localPosition.y);
         movX2 = (r2.transform.localPosition.x - r4.transform.localPosition.x);
@@ -33,6 +37,14 @@ public class StateController3 : MonoBehaviour
         resistor2 = r2.GetComponent<Resistores3>();
         resistor3 = r3.GetComponent<Resistores3>();
         resistor4 = r4.GetComponent<Resistores3>();
+        resistor1.transform.GetChild(0).gameObject.SetActive(false);
+        resistor1.transform.GetChild(1).gameObject.SetActive(false);
+        resistor2.transform.GetChild(0).gameObject.SetActive(false);
+        resistor2.transform.GetChild(1).gameObject.SetActive(false);
+        resistor3.transform.GetChild(0).gameObject.SetActive(false);
+        resistor3.transform.GetChild(1).gameObject.SetActive(false);
+        resistor4.transform.GetChild(0).gameObject.SetActive(false);
+        resistor4.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,23 +53,26 @@ public class StateController3 : MonoBehaviour
         newFPS = 1.0f / Time.smoothDeltaTime;
         if (newFPS != float.PositiveInfinity)
             fps = Mathf.Lerp(fps, newFPS, 0.005f);
-
-        if (r4 != null)
+        if (enunciado.active == false)
         {
-            equivalente1();
+            if (r4 != null)
+            {
+                equivalente1();
+            }
+            if (r3 != null)
+            {
+                equivalente2();
+            }
+            if (r2 != null)
+            {
+                equivalente3();
+            }
+            if (r2 == null)
+            {
+                checarVitoria();
+            }
         }
-        if (r3 != null)
-        {
-            equivalente2();
-        }
-        if (r2 != null)
-        {
-            equivalente3();
-        }
-        if (r2 == null)
-        {
-            checarVitoria();
-        }
+        
     }
 
     private void equivalente1()
@@ -86,7 +101,7 @@ public class StateController3 : MonoBehaviour
             if (!teste1 && !teste2 && !teste3)
             {
                 r3.transform.localPosition = r4.transform.localPosition;
-               // r3.transform.localRotation = r4.transform.localRotation;
+                r3.transform.localRotation = r4.transform.localRotation;
                 resistor3.resistencia = resistor3.resistencia + resistor4.resistencia;
                 r4.SetActive(false);
                 r4 = null;

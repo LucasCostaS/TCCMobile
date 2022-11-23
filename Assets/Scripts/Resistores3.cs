@@ -36,5 +36,6 @@ public class Resistores3 : MonoBehaviour
     public void CaixaAtiva()
     {
         caixaAtiva = true;
+        
     }
 }

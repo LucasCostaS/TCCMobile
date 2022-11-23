@@ -74,7 +74,7 @@ public class Eventos3 : MonoBehaviour
         {
             resistor = hitInformation.transform.gameObject;
         }
-        Debug.Log(resistor);
+        
         //if (objeto != null)
         //{
         //    stock = (objeto.transform.parent.name == "Stock");
@@ -93,11 +93,20 @@ public class Eventos3 : MonoBehaviour
     private void FimDeToque()
     {
 
+        
         if (enunciado.activeSelf)
         {
             DesativarEnunciado();
             resistor = null;
             return;
+        }
+
+        if (inputTexto != null)
+        {
+            if (!(inputTexto.transform.parent.GetComponent<Resistores3>().caixaAtiva)){
+                inputTexto.SetActive(false);
+                controller.GetComponent<StateController3>().click = true;
+            }
         }
 
         if (resistor != null)
@@ -120,14 +129,9 @@ public class Eventos3 : MonoBehaviour
                 
             }
         }
-
-        //if (!(inputTexto.transform.parent.GetComponent<Resistores3>().caixaAtiva))
-        //{
-        //    inputTexto.SetActive(false);
-        //    controller.GetComponent<StateController3>().click = true;
-        //}
-            
         resistor = null;
+        if (inputTexto != null)
+            inputTexto.transform.parent.GetComponent<Resistores3>().caixaAtiva = false;
 
     }
 
