@@ -6,14 +6,14 @@ public class Resistores5 : MonoBehaviour
 {
     private float resistencia;
     public bool modificado, reduzido;
-    public GameObject controller;
-    public bool caixaAtiva;
+    private StateController5 controller;
+    public bool textoAtiva;
+    
     void Start()
     {
-        
+        controller = transform.parent.parent.GetComponent<StateController5>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

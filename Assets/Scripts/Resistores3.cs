@@ -10,17 +10,12 @@ public class Resistores3 : MonoBehaviour
     public bool modificado, reduzido;
     public GameObject controller;
     public bool caixaAtiva;
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
         modificado = false;
         reduzido = false;
         caixaAtiva = false;
     }
-
     private void Update()
     {
         transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TMP_Text>().SetText("Resistencia: " + GetComponent<Resistores3>().resistencia.ToString());
@@ -32,7 +27,6 @@ public class Resistores3 : MonoBehaviour
         modificado = true;
         controller.GetComponent<StateController3>().click = true;
     }
-
     public void CaixaAtiva()
     {
         caixaAtiva = true;
