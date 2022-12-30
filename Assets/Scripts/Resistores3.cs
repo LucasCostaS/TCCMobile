@@ -10,6 +10,7 @@ public class Resistores3 : MonoBehaviour
     public bool modificado, reduzido;
     public GameObject controller;
     public bool caixaAtiva;
+
     void Start()
     {
         modificado = false;

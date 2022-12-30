@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class StateController5 : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool spawn = true;
+    public GameObject pecasCriadas;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
-    {
-        
+    { 
+        spawn = (Physics2D.OverlapCircle(new Vector2(pecasCriadas.transform.localPosition.x, pecasCriadas.transform.localPosition.y), 0.1f, (1 << 6)) == null);
     }
 }

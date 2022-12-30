@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26193776}
   - component: {fileID: 26193777}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_T32_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,9 +219,9 @@ GameObject:
   - component: {fileID: 31242964}
   - component: {fileID: 31242963}
   - component: {fileID: 31242966}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: resistor_5
-  m_TagString: Untagged
+  m_TagString: Stock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 121364097}
   - component: {fileID: 121364098}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_L32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,8 +428,8 @@ GameObject:
   - component: {fileID: 181388498}
   - component: {fileID: 181388499}
   - component: {fileID: 181388500}
-  m_Layer: 0
-  m_Name: pecas
+  m_Layer: 7
+  m_Name: Pecas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -565,7 +565,7 @@ GameObject:
   - component: {fileID: 213814301}
   - component: {fileID: 213814300}
   - component: {fileID: 213814299}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 238549450}
   - component: {fileID: 238549451}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: redo_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 246942423}
   - component: {fileID: 246942424}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fonte_CC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292776662}
   - component: {fileID: 292776663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,9 +1002,9 @@ GameObject:
   - component: {fileID: 326140700}
   - component: {fileID: 326140699}
   - component: {fileID: 326140702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: resistor_3
-  m_TagString: Untagged
+  m_TagString: Stock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1396,7 +1396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430875387}
   - component: {fileID: 430875388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_L32_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1480,7 +1480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 439816735}
   - component: {fileID: 439816736}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_L32_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 459700052}
   - component: {fileID: 459700054}
   - component: {fileID: 459700053}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1699,7 +1699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 492370900}
   - component: {fileID: 492370901}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_T32_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1783,7 +1783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 495535970}
   - component: {fileID: 495535971}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: redo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 503061223}
   - component: {fileID: 503061225}
   - component: {fileID: 503061224}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2004,7 +2004,8 @@ GameObject:
   m_Component:
   - component: {fileID: 505201876}
   - component: {fileID: 505201877}
-  m_Layer: 0
+  - component: {fileID: 505201878}
+  m_Layer: 7
   m_Name: resistor_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2078,6 +2079,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &505201878
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505201875}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 1.41, z: 0, w: 1.6899999}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.12, y: 5.12}
+  m_EdgeRadius: 0
 --- !u!1 &507976498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,7 +2119,7 @@ GameObject:
   - component: {fileID: 507976501}
   - component: {fileID: 507976500}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Enunciado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2267,7 +2294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510171487}
   - component: {fileID: 510171488}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_EX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2351,7 +2378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537526004}
   - component: {fileID: 537526005}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fonte_CC_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2436,7 +2463,7 @@ GameObject:
   - component: {fileID: 554599991}
   - component: {fileID: 554599993}
   - component: {fileID: 554599992}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2562,6 +2589,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554599990}
   m_CullTransparentMesh: 1
+--- !u!1 &561963367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561963368}
+  m_Layer: 6
+  m_Name: PecasCriadas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &561963368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561963367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &596946985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2764,8 @@ GameObject:
   m_Component:
   - component: {fileID: 630179771}
   - component: {fileID: 630179772}
-  m_Layer: 0
+  - component: {fileID: 630179773}
+  m_Layer: 7
   m_Name: resistor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2780,6 +2839,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &630179773
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630179770}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 1.41, z: 0, w: 1.6899999}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.12, y: 5.12}
+  m_EdgeRadius: 0
 --- !u!1 &650441812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,6 +2876,7 @@ GameObject:
   - component: {fileID: 650441815}
   - component: {fileID: 650441814}
   - component: {fileID: 650441813}
+  - component: {fileID: 650441816}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2848,6 +2934,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &650441816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650441812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948914070bb0dfb48ae06f19d9773786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1346030501}
+  enunciado: {fileID: 507976498}
+  telaCircuito: {fileID: 2062172831}
+  btnDesfazer: {fileID: 1018275671}
+  prefab: {fileID: 2954341542888935173, guid: 5b2eedea4aedfa6499601e14e9a130d3, type: 3}
+  pai: {fileID: 561963367}
+  pecaCriada: {fileID: 0}
 --- !u!1 &660148441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,7 +2963,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660148442}
   - component: {fileID: 660148443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2942,7 +3047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 742460585}
   - component: {fileID: 742460586}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3026,7 +3131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 829647656}
   - component: {fileID: 829647657}
-  m_Layer: 0
+  - component: {fileID: 829647658}
+  m_Layer: 7
   m_Name: resistor_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3100,6 +3206,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &829647658
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829647655}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 1.41, z: 0, w: 1.6899999}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.12, y: 5.12}
+  m_EdgeRadius: 0
 --- !u!1 &835585090
 GameObject:
   m_ObjectHideFlags: 0
@@ -3110,7 +3242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 835585091}
   - component: {fileID: 835585092}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_L32_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3202,7 +3334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &842485538
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3295,7 +3427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 858704060}
   - component: {fileID: 858704061}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_T32_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3379,7 +3511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 871775496}
   - component: {fileID: 871775497}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3463,7 +3595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 874731131}
   - component: {fileID: 874731132}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_5
   m_TagString: LinhaL
   m_Icon: {fileID: 0}
@@ -3548,7 +3680,7 @@ GameObject:
   - component: {fileID: 891111918}
   - component: {fileID: 891111920}
   - component: {fileID: 891111919}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3686,9 +3818,9 @@ GameObject:
   - component: {fileID: 894497857}
   - component: {fileID: 894497856}
   - component: {fileID: 894497859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: resistor_2
-  m_TagString: Untagged
+  m_TagString: Stock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3810,7 +3942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 926111129}
   - component: {fileID: 926111130}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3896,7 +4028,7 @@ GameObject:
   - component: {fileID: 927036130}
   - component: {fileID: 927036129}
   - component: {fileID: 927036128}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4069,7 +4201,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346030502}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateController3, Assembly-CSharp
         m_MethodName: resetar
         m_Mode: 1
@@ -4131,7 +4263,7 @@ GameObject:
   - component: {fileID: 1061069076}
   - component: {fileID: 1061069075}
   - component: {fileID: 1061069074}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4230,7 +4362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105110262}
   - component: {fileID: 1105110263}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4315,7 +4447,7 @@ GameObject:
   - component: {fileID: 1114154812}
   - component: {fileID: 1114154814}
   - component: {fileID: 1114154813}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4451,7 +4583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137742262}
   - component: {fileID: 1137742263}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_T32_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4535,7 +4667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1281435250}
   - component: {fileID: 1281435251}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_T32_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4618,7 +4750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1346030503}
-  - component: {fileID: 1346030502}
+  - component: {fileID: 1346030504}
   m_Layer: 0
   m_Name: StateController
   m_TagString: Untagged
@@ -4626,28 +4758,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1346030502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1346030501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f09a27c0afd82d4eaecfaccfc86a937, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  r1: {fileID: 0}
-  r2: {fileID: 0}
-  r3: {fileID: 0}
-  r4: {fileID: 0}
-  prefab1: {fileID: 6783390635476829518, guid: ed1d1c6f98b8389409cf98591aae54a5, type: 3}
-  pecas: {fileID: 181388497}
-  vitoria: {fileID: 1822322497}
-  enunciado: {fileID: 0}
-  btnDesfazer: {fileID: 0}
-  click: 0
 --- !u!4 &1346030503
 Transform:
   m_ObjectHideFlags: 0
@@ -4664,6 +4774,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1346030504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346030501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7348297376779964d836c9a34697528e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: 1
+  pecasCriadas: {fileID: 561963367}
 --- !u!1 &1371462263
 GameObject:
   m_ObjectHideFlags: 0
@@ -4676,9 +4800,9 @@ GameObject:
   - component: {fileID: 1371462266}
   - component: {fileID: 1371462265}
   - component: {fileID: 1371462268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: resistor_1
-  m_TagString: Untagged
+  m_TagString: Stock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4800,7 +4924,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1449810061}
   - component: {fileID: 1449810062}
-  m_Layer: 0
+  - component: {fileID: 1449810063}
+  m_Layer: 7
   m_Name: resistor_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4874,6 +4999,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1449810063
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449810060}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 1.41, z: 0, w: 1.6899999}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.12, y: 5.12}
+  m_EdgeRadius: 0
 --- !u!1 &1462257527
 GameObject:
   m_ObjectHideFlags: 0
@@ -4884,7 +5035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1462257528}
   - component: {fileID: 1462257529}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5105,7 +5256,7 @@ GameObject:
   - component: {fileID: 1569968114}
   - component: {fileID: 1569968113}
   - component: {fileID: 1569968112}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5203,9 +5354,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1604268843}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stock
-  m_TagString: Untagged
+  m_TagString: Stock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5241,7 +5392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1645586312}
   - component: {fileID: 1645586313}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5444,7 +5595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1704855086}
   - component: {fileID: 1704855087}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: redo_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5528,7 +5679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1709944561}
   - component: {fileID: 1709944562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5612,7 +5763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1723805042}
   - component: {fileID: 1723805043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_T32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5698,7 +5849,7 @@ GameObject:
   - component: {fileID: 1811055914}
   - component: {fileID: 1811055913}
   - component: {fileID: 1811055912}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5835,7 +5986,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1896690673}
   - component: {fileID: 1896690674}
-  m_Layer: 0
+  - component: {fileID: 1896690675}
+  m_Layer: 7
   m_Name: resistor_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5909,6 +6061,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1896690675
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896690672}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 1.41, z: 0, w: 1.6899999}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.12, y: 5.12}
+  m_EdgeRadius: 0
 --- !u!1 &1907473428
 GameObject:
   m_ObjectHideFlags: 0
@@ -6056,9 +6234,9 @@ GameObject:
   - component: {fileID: 1922339827}
   - component: {fileID: 1922339826}
   - component: {fileID: 1922339829}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: resistor
-  m_TagString: Untagged
+  m_TagString: Stock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6182,9 +6360,9 @@ GameObject:
   - component: {fileID: 1935284861}
   - component: {fileID: 1935284860}
   - component: {fileID: 1935284863}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: resistor_4
-  m_TagString: Untagged
+  m_TagString: Stock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6307,7 +6485,7 @@ GameObject:
   - component: {fileID: 1952020179}
   - component: {fileID: 1952020181}
   - component: {fileID: 1952020180}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6443,7 +6621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1990109993}
   - component: {fileID: 1990109994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: linha_reta32_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6529,7 +6707,7 @@ GameObject:
   - component: {fileID: 2062172834}
   - component: {fileID: 2062172833}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Circuito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6605,7 +6783,7 @@ GameObject:
   - component: {fileID: 2122578478}
   - component: {fileID: 2122578477}
   - component: {fileID: 2122578476}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
