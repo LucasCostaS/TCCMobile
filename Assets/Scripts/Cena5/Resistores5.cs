@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class Resistores5 : MonoBehaviour
 {
@@ -11,14 +9,13 @@ public class Resistores5 : MonoBehaviour
   private GameObject criador;
   private GameObject sombra;
 
-  void Start()
+  private void Start()
   {
     SetResistencia(float.Parse(criador.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().GetParsedText().Substring(0, 2)));
   }
 
-  void Update()
+  private void Update()
   {
-    sombra = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y), new Vector2(0.5f, 0.5f), 0f, (1 << 7)).gameObject;
   }
 
   public float GetResistencia()
@@ -29,6 +26,22 @@ public class Resistores5 : MonoBehaviour
   public void SetResistencia(float resistencia)
   {
     this.resistencia = resistencia;
+  }
+
+  public void SetPosicao(Vector2 posicao)
+  {
+    transform.position = posicao;
+    Collider2D col = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y),
+                                      0.5f,
+                                      1 << 7);
+    if (col != null)
+    {
+      SetSombra(Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y),
+                                      0.5f,
+                                      1 << 7).gameObject);
+    }
+    else
+      SetSombra(null);
   }
 
   public GameObject GetCriador()
@@ -51,5 +64,3 @@ public class Resistores5 : MonoBehaviour
     this.sombra = sombra;
   }
 }
-
-

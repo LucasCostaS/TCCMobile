@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -33,7 +31,7 @@ public class Eventos2 : MonoBehaviour
   private int ocupacao;
   private Vector2 lugar = new Vector2();
 
-  void OnEnable()
+  private void OnEnable()
   {
     m_EventSystem = EventSystem.current;
     controlador = state.GetComponent<StateController2>();
@@ -41,10 +39,9 @@ public class Eventos2 : MonoBehaviour
     colisorLixo = lixo.GetComponent<BoxCollider2D>();
 
     escalaAtual = new Vector3(lixo.transform.localScale.x, lixo.transform.localScale.y, 1f);
-
   }
 
-  void Update()
+  private void Update()
   {
     tocando = (Input.touchCount > 0);
     if (tocando)
@@ -87,13 +84,11 @@ public class Eventos2 : MonoBehaviour
           offset = objeto.transform.position - touchPosWorld;
         dragging = true;
       }
-
     }
   }
 
   private void FimDeToque()
   {
-
     if (fimToque)
     {
       gradeX = posicaoSnap.gradeX;
@@ -110,7 +105,6 @@ public class Eventos2 : MonoBehaviour
 
         if (colisorLixo.IsTouching(objeto.GetComponent<BoxCollider2D>()))
           DestruirObjeto();
-
 
         if (paiPeca)
         {
@@ -141,11 +135,7 @@ public class Eventos2 : MonoBehaviour
 
             PosicionarNaGrade();
           }
-
-
         }
-
-
       }
       duracaoToque = 0.0f;
       objeto = null;
@@ -189,8 +179,6 @@ public class Eventos2 : MonoBehaviour
           lixo.transform.localScale = new Vector3(lixo.transform.localScale.x * 1.2f, lixo.transform.localScale.y * 1.2f, 1f);
           trava = true;
         }
-
-
       }
       else
       {
@@ -199,12 +187,10 @@ public class Eventos2 : MonoBehaviour
         trava = false;
       }
     }
-
-
   }
+
   private void SetarObjeto()
   {
-
     RaycastHit2D hitInformation = Physics2D.Raycast(touchPosWorld2D, Camera.main.transform.forward);
     if (hitInformation.collider != null)
     {
@@ -216,8 +202,6 @@ public class Eventos2 : MonoBehaviour
       stock = (objeto.transform.parent.name == "Stock");
       paiPeca = (objeto.transform.parent.name != "Stock");
     }
-
-
   }
 
   private void Rotacao()
