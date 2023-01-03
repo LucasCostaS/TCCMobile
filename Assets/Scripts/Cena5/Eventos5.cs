@@ -15,13 +15,13 @@ public class Eventos5 : MonoBehaviour
   private StateController5 state;
   private Collider2D colisorLixo;
 
-  public GameObject controller, enunciado, telaCircuito, btnDesfazer, prefab, pai, pecaCriada, stock;
+  public GameObject controller, circuitoUI, stock, circuito, vitoria, enunciado, prefab, pai, pecaCriada;
 
   private void OnEnable()
   {
     m_EventSystem = EventSystem.current;
     state = controller.GetComponent<StateController5>();
-    colisorLixo = telaCircuito.transform.GetChild(1).GetComponent<BoxCollider2D>();
+    colisorLixo = circuitoUI.transform.GetChild(1).GetComponent<BoxCollider2D>();
   }
 
   private void Update()
@@ -61,16 +61,14 @@ public class Eventos5 : MonoBehaviour
   private void DesativarEnunciado()
   {
     //ARRUMAR
-    enunciado.SetActive(false);
-    telaCircuito.SetActive(true);
-    btnDesfazer.SetActive(true);
     stock.SetActive(true);
+    circuito.SetActive(true);
+    circuitoUI.SetActive(true);
+    enunciado.SetActive(false);
   }
 
   private void InicioDeToque()
   {
-    Debug.Log(colisorLixo.gameObject.transform.localScale);
-
     PegarPosicaoNoMundo();
 
     SetarObjeto();
@@ -225,14 +223,14 @@ public class Eventos5 : MonoBehaviour
 
   private void LimparResistencia()
   {
-    TMP_Text valor = telaCircuito.transform.GetChild(0).GetComponent<TMP_Text>();
+    TMP_Text valor = circuitoUI.transform.GetChild(0).GetComponent<TMP_Text>();
     valor.SetText("");
     valor.enabled = false;
   }
 
   private void MostrarResistencia()
   {
-    TMP_Text valor = telaCircuito.transform.GetChild(0).GetComponent<TMP_Text>();
+    TMP_Text valor = circuitoUI.transform.GetChild(0).GetComponent<TMP_Text>();
     string texto = (resistor.GetComponent<Resistores5>().GetResistencia().ToString()) + " Ohm";
     valor.SetText(texto);
     if (snapAtual == resistor.transform.position)

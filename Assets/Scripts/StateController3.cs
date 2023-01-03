@@ -48,7 +48,7 @@ public class StateController3 : MonoBehaviour
     newFPS = 1.0f / Time.smoothDeltaTime;
     if (newFPS != float.PositiveInfinity)
       fps = Mathf.Lerp(fps, newFPS, 0.005f);
-    if (enunciado.active == false)
+    if (enunciado.activeSelf == false)
     {
       if (r4 != null)
       {
