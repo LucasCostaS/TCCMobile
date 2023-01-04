@@ -7,7 +7,7 @@ public class Eventos5 : MonoBehaviour
   private EventSystem m_EventSystem;
 
   private Touch toque;
-  private bool inicioToque, fimToque, movimentoToque, tocando, dragging, trava = false;
+  private bool inicioToque, fimToque, movimentoToque, tocando, trava = false;
   private Vector3 touchPosWorld, offset, snapAtual, escalaAtual;
   private Vector2 touchPosWorld2D;
   private GameObject resistor;
@@ -16,6 +16,7 @@ public class Eventos5 : MonoBehaviour
   private Collider2D colisorLixo;
 
   public GameObject controller, circuitoUI, stock, circuito, vitoria, enunciado, prefab, pai, pecaCriada;
+  public bool dragging;
 
   private void OnEnable()
   {
@@ -142,6 +143,10 @@ public class Eventos5 : MonoBehaviour
           MostrarResistencia();
           SnapPraPosicaoCorreta();
         }
+        else if (resistor.tag == "Reduzido")
+        {
+          MostrarResistencia();
+        }
       }
       else
       {
@@ -225,16 +230,18 @@ public class Eventos5 : MonoBehaviour
   {
     TMP_Text valor = circuitoUI.transform.GetChild(0).GetComponent<TMP_Text>();
     valor.SetText("");
-    valor.enabled = false;
+    circuitoUI.transform.GetChild(0).gameObject.SetActive(false);
   }
 
   private void MostrarResistencia()
   {
     TMP_Text valor = circuitoUI.transform.GetChild(0).GetComponent<TMP_Text>();
     string texto = (resistor.GetComponent<Resistores5>().GetResistencia().ToString()) + " Ohm";
+    Debug.Log(texto);
+
     valor.SetText(texto);
-    if (snapAtual == resistor.transform.position)
-      valor.enabled = true;
+    //if (snapAtual == resistor.transform.position)
+      circuitoUI.transform.GetChild(0).gameObject.SetActive(true);
   }
 
   private void SpawnPeca()

@@ -18,6 +18,7 @@ TagManager:
   - Pecas
   - Stock
   - Sombra
+  - Reduzido
   layers:
   - Default
   - TransparentFX

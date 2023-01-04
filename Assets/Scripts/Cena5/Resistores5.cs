@@ -4,14 +4,12 @@ using UnityEngine;
 public class Resistores5 : MonoBehaviour
 {
   private float resistencia;
-  private StateController5 controller;
-  public bool textoAtiva;
-  private GameObject criador;
-  private GameObject sombra;
+  private GameObject criador, sombra;
 
   private void Start()
   {
-    SetResistencia(float.Parse(criador.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().GetParsedText().Substring(0, 2)));
+    if (this.tag == "Resistor")
+      SetResistencia(float.Parse(criador.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().GetParsedText().Substring(0, 2)));
   }
 
   private void Update()
