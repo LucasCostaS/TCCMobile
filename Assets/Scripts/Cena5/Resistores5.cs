@@ -1,29 +1,30 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class Resistores5 : MonoBehaviour
 {
-  private float resistencia;
+  private Decimal resistencia;
   private GameObject criador, sombra;
 
   private void Start()
   {
     if (this.tag == "Resistor")
-      SetResistencia(float.Parse(criador.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().GetParsedText().Substring(0, 2)));
+      SetResistencia(decimal.Parse(criador.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().GetParsedText().Substring(0, 2)));
   }
 
   private void Update()
   {
   }
 
-  public float GetResistencia()
+  public decimal GetResistencia()
   {
     return this.resistencia;
   }
 
-  public void SetResistencia(float resistencia)
+  public void SetResistencia(decimal resistencia)
   {
-    this.resistencia = resistencia;
+    this.resistencia = Math.Round(resistencia, 2, MidpointRounding.ToEven);
   }
 
   public void SetPosicao(Vector2 posicao)

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class StateController5 : MonoBehaviour
@@ -15,7 +14,7 @@ public class StateController5 : MonoBehaviour
   private float fps = 60f, newFPS;
   private Resistores5[] resistor = new Resistores5[5];
   private GameObject[] r = new GameObject[5];
-  private GameObject red1Direita, red1Esquerda, red2, original;
+  private GameObject red1Direita, red1Esquerda, red2, red3, original;
   private bool[] reduzidos = new bool[5];
   private bool trava = false;
   private Estado estadoAtivo = Estado.Original;
@@ -40,6 +39,7 @@ public class StateController5 : MonoBehaviour
     red1Direita = circuito.transform.GetChild(2).gameObject;
     red1Esquerda = circuito.transform.GetChild(1).gameObject;
     red2 = circuito.transform.GetChild(3).gameObject;
+    red3 = circuito.transform.GetChild(4).gameObject;
   }
 
   private void SetarResistores()
@@ -64,9 +64,21 @@ public class StateController5 : MonoBehaviour
     if (reduzidos[i] == false)
     {
       if (check.collider != null)
+      {
         r[i] = check.collider.gameObject;
+        if (!evento.ordemSnap.Exists(x => x.gameObject == r[i]))
+        {
+          evento.ordemSnap.Add(r[i]);
+        }
+      }
       else
+      {
+        if (evento.ordemSnap.Exists(x => x.gameObject.transform.position == sombras[i].transform.position))
+        {
+          evento.ordemSnap.Remove(evento.ordemSnap.Find(x => x.gameObject.transform.position == sombras[i].transform.position));
+        }
         r[i] = null;
+      }
 
       if (r[i] != null)
         resistor[i] = r[i].GetComponent<Resistores5>();
@@ -89,6 +101,7 @@ public class StateController5 : MonoBehaviour
   private void Update()
   {
     VelocidadeAnimacao();
+    Debug.Log(evento.ordemSnap[evento.ordemSnap.Count - 1]);
 
     SetarResistores();
 
@@ -101,7 +114,7 @@ public class StateController5 : MonoBehaviour
 
     ChecarReducao2();
 
-    // ChecarReducao3();
+    ChecarReducao3();
 
     switch (estadoAtivo)
     {
@@ -116,7 +129,37 @@ public class StateController5 : MonoBehaviour
       case Estado.Estado2:
         Animacao2();
         break;
+
+      case Estado.Estado3:
+        Animacao3();
+        break;
     }
+  }
+
+  private void Animacao3()
+  {
+    red2.transform.GetChild(3).transform.gameObject.SetActive(false);
+    red2.transform.GetChild(4).transform.gameObject.SetActive(false);
+    Vector3 mov = new Vector3(0f, -5.12f / fps, 0f);
+    if (red2.transform.GetChild(0).transform.localPosition.x < red3.transform.GetChild(0).transform.localPosition.x)
+    {
+      red2.transform.GetChild(0).Translate(mov, Space.World);
+      red2.transform.GetChild(5).Translate(mov, Space.World);
+      red2.transform.GetChild(6).Translate(mov, Space.World);
+    }
+    else
+    {
+      red2.transform.GetChild(0).transform.localPosition = red3.transform.GetChild(0).transform.localPosition;
+      red2.transform.GetChild(5).transform.gameObject.SetActive(false);
+      red2.transform.GetChild(6).transform.gameObject.SetActive(false);
+      red2.SetActive(false);
+      r[4].SetActive(false);
+      red3.SetActive(true);
+      estadoAtivo = Estado.Original;
+    }
+
+    if (red3.activeInHierarchy && red3.transform.GetChild(0).GetComponent<Resistores5>().GetResistencia() == 1)
+      vitoria.SetActive(true);
   }
 
   private void Animacao2()
@@ -147,68 +190,26 @@ public class StateController5 : MonoBehaviour
     if (res1.localPosition.y < -2.56f)
       res1.Translate((2.56f / fps), 0f, 0f, Space.World);
     else
-      res1.gameObject.SetActive(false);
+      res1.localPosition = new Vector3(res1.localPosition.x, -2.56f, res1.localPosition.z);
 
     if (res2.localPosition.y > -2.56f)
       res2.Translate((-2.56f / fps), 0f, 0f, Space.World);
     else
+      res2.localPosition = new Vector3(res2.localPosition.x, -2.56f, res2.localPosition.z);
+
+    if (res1.localPosition.y == -2.56f)
     {
       res2.gameObject.SetActive(false);
+      res1.gameObject.SetActive(false);
     }
-      
 
     if (!res2.gameObject.activeInHierarchy && !res1.gameObject.activeInHierarchy)
     {
+      red1Esquerda.SetActive(false);
+      red1Direita.SetActive(false);
       red2.SetActive(true);
       estadoAtivo = Estado.Original;
     }
-
-    /*circuito.transform.GetChild(0).transform.GetChild(6).gameObject.SetActive(false);
-    circuito.transform.GetChild(0).transform.GetChild(7).gameObject.SetActive(false);
-    circuito.transform.GetChild(0).transform.GetChild(20).gameObject.SetActive(false);
-    circuito.transform.GetChild(0).transform.GetChild(21).gameObject.SetActive(false);
-    circuito.transform.GetChild(0).transform.GetChild(8).gameObject.SetActive(false);
-    circuito.transform.GetChild(0).transform.GetChild(19).gameObject.SetActive(false);
-
-    Transform a = red1Direita.transform.GetChild(1).transform;
-    Transform b = red1Direita.transform.GetChild(2).transform;
-    Transform c = red1Direita.transform.GetChild(3).transform;
-
-    if (a.localPosition.x < 0f)
-    {
-      a.Translate(0f, (-2.56f / fps), 0f, Space.World);
-      b.Translate(0f, (-2.56f / fps), 0f, Space.World);
-      c.Translate(0f, (-2.56f / fps), 0f, Space.World);
-    }
-    else
-    {
-      a.localPosition = new Vector3(0f, a.localPosition.y, a.localPosition.z);
-      b.gameObject.SetActive(false);
-      c.localPosition = new Vector3(0f, c.localPosition.y, c.localPosition.z);
-    }
-
-    Transform d = red1Direita.transform.GetChild(4).transform;
-    Transform e = red1Direita.transform.GetChild(5).transform;
-    Transform f = red1Direita.transform.GetChild(6).transform;
-
-    if (d.localPosition.x > 0f)
-    {
-      d.Translate(0f, (2.56f / fps), 0f, Space.World);
-      e.Translate(0f, (2.56f / fps), 0f, Space.World);
-      f.Translate(0f, (2.56f / fps), 0f, Space.World);
-    }
-    else
-    {
-      d.localPosition = new Vector3(0f, d.localPosition.y, d.localPosition.z);
-      e.gameObject.SetActive(false);
-      f.localPosition = new Vector3(0f, f.localPosition.y, f.localPosition.z);
-    }
-
-    if (!e.gameObject.activeInHierarchy && !b.gameObject.activeInHierarchy)
-    {
-      estadoAtivo = Estado.Original;
-      red1Direita.transform.GetChild(0).gameObject.SetActive(true);
-    }*/
   }
 
   private void AnimacaoDireita1()
@@ -348,7 +349,7 @@ public class StateController5 : MonoBehaviour
 
   private void ChecarReducao2()
   {
-    if (reduzidos[0] && reduzidos[1] && reduzidos[2] && reduzidos[3] && estadoAtivo == Estado.Original)
+    if (reduzidos[0] && reduzidos[1] && reduzidos[2] && reduzidos[3] && estadoAtivo == Estado.Original && !reduzidos[4])
     {
       estadoAtivo = Estado.Estado2;
       red2.transform.GetChild(0).GetComponent<Resistores5>().SetResistencia(red1Direita.transform.GetChild(0).GetComponent<Resistores5>().GetResistencia() + red1Esquerda.transform.GetChild(0).GetComponent<Resistores5>().GetResistencia());
@@ -357,9 +358,11 @@ public class StateController5 : MonoBehaviour
 
   private void ChecarReducao3()
   {
-    if (reduzidos[0] && reduzidos[1] && reduzidos[2] && reduzidos[3] && r[4] && !reduzidos[4])
+    if (red2.activeInHierarchy && r[4] && !reduzidos[4])
     {
-
+      reduzidos[4] = true;
+      estadoAtivo = Estado.Estado3;
+      red3.transform.GetChild(0).GetComponent<Resistores5>().SetResistencia(1 / ((1 / red2.transform.GetChild(0).GetComponent<Resistores5>().GetResistencia()) + (1 / resistor[4].GetResistencia())));
     }
   }
 }

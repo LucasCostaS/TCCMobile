@@ -12,15 +12,8 @@ public class Eventos3 : MonoBehaviour
   public GameObject enunciado;
   public GameObject telaCircuito;
   public GameObject btnDesfazer;
-  private GameObject objeto;
   private GameObject inputTexto;
 
-  // Start is called before the first frame update
-  private void OnEnable()
-  {
-  }
-
-  // Update is called once per frame
   private void Update()
   {
     tocando = (Input.touchCount > 0);
@@ -67,12 +60,6 @@ public class Eventos3 : MonoBehaviour
     {
       resistor = hitInformation.transform.gameObject;
     }
-
-    //if (objeto != null)
-    //{
-    //    stock = (objeto.transform.parent.name == "Stock");
-    //    paiPeca = (objeto.transform.parent.name != "Stock");
-    //}
   }
 
   private void PegarPosicaoNoMundo()
@@ -110,7 +97,6 @@ public class Eventos3 : MonoBehaviour
         controller.GetComponent<StateController3>().click = false;
       }
 
-      //GetComponent<SpriteRenderer>().color = Color.yellow;
       if (reduzido == true)
       {
         inputTexto = resistor.transform.GetChild(1).gameObject;

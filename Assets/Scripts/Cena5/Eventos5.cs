@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,6 +15,7 @@ public class Eventos5 : MonoBehaviour
   private float duracaoToque;
   private StateController5 state;
   private Collider2D colisorLixo;
+  public List<GameObject> ordemSnap = new List<GameObject>();
 
   public GameObject controller, circuitoUI, stock, circuito, vitoria, enunciado, prefab, pai, pecaCriada;
   public bool dragging;
@@ -203,11 +205,13 @@ public class Eventos5 : MonoBehaviour
                                                   results,
                                                   Mathf.Infinity,
                                                   1 << 6);
-
     if (sombra != null)
     {
       if (raycastHit2D < 1)
+      {
+        ordemSnap.Add(resistor);
         pos = sombra.transform.position;
+      }
       else
         pos = snapAtual;
     }
@@ -241,7 +245,7 @@ public class Eventos5 : MonoBehaviour
 
     valor.SetText(texto);
     //if (snapAtual == resistor.transform.position)
-      circuitoUI.transform.GetChild(0).gameObject.SetActive(true);
+    circuitoUI.transform.GetChild(0).gameObject.SetActive(true);
   }
 
   private void SpawnPeca()
