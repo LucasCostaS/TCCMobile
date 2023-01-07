@@ -16,6 +16,9 @@ TagManager:
   - ResistorPrefab
   - LinhaRetaPrefab
   - Pecas
+  - Stock
+  - Sombra
+  - Reduzido
   layers:
   - Default
   - TransparentFX
@@ -23,8 +26,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - pecas
+  - Sombra(pecas)
   - 
   - 
   - 

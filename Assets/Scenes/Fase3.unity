@@ -270,7 +270,6 @@ GameObject:
   - component: {fileID: 63733526}
   - component: {fileID: 63733525}
   - component: {fileID: 63733527}
-  - component: {fileID: 63733528}
   m_Layer: 0
   m_Name: resistor
   m_TagString: Untagged
@@ -390,21 +389,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0
---- !u!114 &63733528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63733523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81473d268db33fc4d87bb62ca992bb53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuInicial: {fileID: 0}
-  menuFases: {fileID: 0}
-  Botao: {fileID: 0}
 --- !u!1 &120793095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,13 +988,10 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
-  m_OnDeselect:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 674737154}
         m_TargetAssemblyTypeName: Resistores3, Assembly-CSharp
-        m_MethodName: FecharInputTexto
+        m_MethodName: CaixaAtiva
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1020,6 +1001,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_OnDeselect:
+    m_PersistentCalls:
+      m_Calls: []
   m_OnTextSelection:
     m_PersistentCalls:
       m_Calls: []
@@ -1042,7 +1026,7 @@ MonoBehaviour:
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_OnFocusSelectAll: 1
-  m_ResetOnDeActivation: 0
+  m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
@@ -1564,7 +1548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objeto: {fileID: 181388497}
-  objeto2: {fileID: 0}
+  objeto2: {fileID: 1018275671}
 --- !u!61 &507976501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2483,7 +2467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 455, y: -87}
+  m_AnchoredPosition: {x: 167, y: -83}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679353295
@@ -3564,7 +3548,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 63733525}
+        m_TargetAssemblyTypeName: Resistores3, Assembly-CSharp
+        m_MethodName: CaixaAtiva
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -3962,6 +3958,8 @@ MonoBehaviour:
   prefab1: {fileID: 6783390635476829518, guid: ed1d1c6f98b8389409cf98591aae54a5, type: 3}
   pecas: {fileID: 181388497}
   vitoria: {fileID: 1822322497}
+  enunciado: {fileID: 507976498}
+  btnDesfazer: {fileID: 1018275671}
   click: 0
 --- !u!4 &1346030503
 Transform:
@@ -5190,7 +5188,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1688060925}
+        m_TargetAssemblyTypeName: Resistores3, Assembly-CSharp
+        m_MethodName: CaixaAtiva
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -5526,7 +5536,6 @@ GameObject:
   - component: {fileID: 1688060926}
   - component: {fileID: 1688060925}
   - component: {fileID: 1688060927}
-  - component: {fileID: 1688060928}
   m_Layer: 0
   m_Name: resistor (2)
   m_TagString: Untagged
@@ -5646,21 +5655,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0
---- !u!114 &1688060928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688060923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81473d268db33fc4d87bb62ca992bb53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuInicial: {fileID: 0}
-  menuFases: {fileID: 0}
-  Botao: {fileID: 0}
 --- !u!1 &1720445392
 GameObject:
   m_ObjectHideFlags: 0
@@ -5982,7 +5976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1811794100
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6968,7 +6962,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1450364484}
+        m_TargetAssemblyTypeName: Resistores3, Assembly-CSharp
+        m_MethodName: CaixaAtiva
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
