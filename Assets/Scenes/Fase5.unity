@@ -4958,9 +4958,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StateController3, Assembly-CSharp
-        m_MethodName: resetar
+      - m_Target: {fileID: 1346030504}
+        m_TargetAssemblyTypeName: StateController5, Assembly-CSharp
+        m_MethodName: Desfazer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5920,6 +5920,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: 1
+  reduzir: 1
+  trava: 0
   evento: {fileID: 650441816}
   pecasCriadas: {fileID: 561963367}
   sombra1: {fileID: 1449810060}

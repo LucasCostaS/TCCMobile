@@ -53,7 +53,7 @@ public class Eventos5 : MonoBehaviour
     {
       PegarPosicaoNoMundo();
       resistor.GetComponent<Resistores5>().SetPosicao(touchPosWorld + offset);
-
+      state.reduzir = true;
       if (Physics2D.IsTouching(colisorLixo, resistor.GetComponent<BoxCollider2D>()))
         colisorLixo.gameObject.transform.localScale = new Vector3(26f, 26f, 1f);
       else
