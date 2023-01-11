@@ -4887,7 +4887,7 @@ GameObject:
   - component: {fileID: 1018275674}
   - component: {fileID: 1018275673}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Desfazer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9232,7 +9232,7 @@ GameObject:
   - component: {fileID: 2062172834}
   - component: {fileID: 2062172833}
   m_Layer: 5
-  m_Name: Circuito
+  m_Name: CircuitoUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
