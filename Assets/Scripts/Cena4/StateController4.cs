@@ -7,9 +7,9 @@ public class StateController4 : MonoBehaviour
   private enum Estado
   {
     Original,
-    Direita1,
-    Esquerda1,
-    Estado2,
+    Direita2,
+    Esquerda2,
+    Estado1,
     Estado3
   }
 
@@ -17,7 +17,7 @@ public class StateController4 : MonoBehaviour
   private Resistores4[] resistor = new Resistores4[5];
   private GameObject[] r = new GameObject[5];
   private Vector2[] sombras = new Vector2[5];
-  private GameObject red1Direita, red1Esquerda, red2, red3, original, preRed1E, preRed1D, preRed3;
+  private GameObject red2Direita, red2Esquerda, red1, red3, original, preRed1E, preRed1D, preRed3;
   private bool[] reduzidos = new bool[5];
   private string primeiro;
   private Estado estadoAtivo = Estado.Original;
@@ -45,9 +45,9 @@ public class StateController4 : MonoBehaviour
 
   private void SetarReducoes()
   {
-    red1Direita = circuito.transform.GetChild(2).gameObject;
-    red1Esquerda = circuito.transform.GetChild(1).gameObject;
-    red2 = circuito.transform.GetChild(3).gameObject;
+    red2Direita = circuito.transform.GetChild(3).gameObject;
+    red2Esquerda = circuito.transform.GetChild(2).gameObject;
+    red1 = circuito.transform.GetChild(1).gameObject;
     red3 = circuito.transform.GetChild(4).gameObject;
   }
 
@@ -72,21 +72,9 @@ public class StateController4 : MonoBehaviour
     if (reduzidos[i] == false)
     {
       if (check.collider != null)
-      {
         r[i] = check.collider.gameObject;
-        /*if (!evento.ordemSnap.Exists(x => x.gameObject == r[i]))
-        {
-          evento.ordemSnap.Add(r[i]);
-        }*/
-      }
       else
-      {
-        /*if (evento.ordemSnap.Exists(x => x.gameObject.transform.position == new Vector3 (sombras[i].x, sombras[i].y, 0f)))
-        {
-          evento.ordemSnap.Remove(evento.ordemSnap.Find(x => x.gameObject.transform.position == new Vector3(sombras[i].x, sombras[i].y, 0f)));
-        }*/
         r[i] = null;
-      }
 
       if (r[i] != null)
         resistor[i] = r[i].GetComponent<Resistores4>();
@@ -115,17 +103,17 @@ public class StateController4 : MonoBehaviour
     spawn = Physics2D.OverlapCircle(new Vector2(pecasCriadas.transform.localPosition.x, pecasCriadas.transform.localPosition.y), 0.1f, 1 << 6) == null;
 
     //AnimacaoEsquerda1();
-    ChecarReducao1Esquerda();
-    if (estadoAtivo == Estado.Esquerda1)
-      AnimacaoEsquerda1();
+    ChecarReducao2Esquerda();
+    if (estadoAtivo == Estado.Esquerda2)
+      AnimacaoEsquerda();
 
-    ChecarReducao1Direita();
-    if (estadoAtivo == Estado.Direita1)
-      AnimacaoDireita1();
+    ChecarReducao2Direita();
+    if (estadoAtivo == Estado.Direita2)
+      AnimacaoDireita();
 
-    ChecarReducao2();
-    if (estadoAtivo == Estado.Estado2)
-      Animacao2();
+    ChecarReducao1();
+    if (estadoAtivo == Estado.Estado1)
+      Animacao1();
 
     ChecarReducao3();
     if (estadoAtivo == Estado.Estado3)
@@ -162,7 +150,7 @@ public class StateController4 : MonoBehaviour
 
   }
 
-  private void Animacao2()
+  private void Animacao1()
   {
     spawn = false;
     circuito.transform.GetChild(0).transform.GetChild(15).gameObject.SetActive(false);
@@ -213,7 +201,7 @@ public class StateController4 : MonoBehaviour
     }
   }
 
-  private void AnimacaoDireita1()
+  private void AnimacaoDireita()
   {
     trava = true;
     spawn = false;
@@ -266,7 +254,7 @@ public class StateController4 : MonoBehaviour
     }
   }
 
-  private void AnimacaoEsquerda1()
+  private void AnimacaoEsquerda()
   {
     trava = true;
     spawn = false;
@@ -326,15 +314,15 @@ public class StateController4 : MonoBehaviour
       fps = Mathf.Lerp(fps, newFPS, 0.005f);
   }
 
-  private void ChecarReducao1Esquerda()
+  private void ChecarReducao2Esquerda()
   {
-    if ((r[0] && r[1]) && (!reduzidos[0] || !reduzidos[1]) && reduzir && estadoAtivo != Estado.Esquerda1)
+    if ((r[0] && r[1]) && (!reduzidos[0] || !reduzidos[1]) && reduzir && estadoAtivo != Estado.Esquerda2)
     {
       if (primeiro == "")
         primeiro = "esquerda";
       reduzidos[0] = true;
       reduzidos[1] = true;
-      estadoAtivo = Estado.Esquerda1;
+      estadoAtivo = Estado.Esquerda2;
       preRed1E = Instantiate(circuito);
       preRed1E.SetActive(false);
       red1Esquerda.SetActive(true);
@@ -344,15 +332,15 @@ public class StateController4 : MonoBehaviour
     }
   }
 
-  private void ChecarReducao1Direita()
+  private void ChecarReducao2Direita()
   {
-    if ((r[2] && r[3]) && (!reduzidos[2] || !reduzidos[3]) && reduzir && estadoAtivo != Estado.Direita1)
+    if ((r[2] && r[3]) && (!reduzidos[2] || !reduzidos[3]) && reduzir && estadoAtivo != Estado.Direita2)
     {
       if (primeiro == "")
         primeiro = "direita";
       reduzidos[2] = true;
       reduzidos[3] = true;
-      estadoAtivo = Estado.Direita1;
+      estadoAtivo = Estado.Direita2;
       preRed1D = Instantiate(circuito);
       preRed1D.SetActive(false);
       red1Direita.SetActive(true);
@@ -362,12 +350,12 @@ public class StateController4 : MonoBehaviour
     }
   }
 
-  private void ChecarReducao2()
+  private void ChecarReducao1()
   {
-    if (reduzidos[0] && reduzidos[1] && reduzidos[2] && reduzidos[3] && !reduzidos[4] && reduzir && estadoAtivo != Estado.Estado2 && !trava)
+    if (!reduzidos[2] && !reduzidos[4] && reduzir && estadoAtivo != Estado.Estado1 && !trava)
     {
-      estadoAtivo = Estado.Estado2;
-      red2.transform.GetChild(0).GetComponent<Resistores4>().SetResistencia(red1Direita.transform.GetChild(0).GetComponent<Resistores4>().GetResistencia() + red1Esquerda.transform.GetChild(0).GetComponent<Resistores4>().GetResistencia());
+      estadoAtivo = Estado.Estado1;
+      red1.transform.GetChild(0).GetComponent<Resistores4>().SetResistencia(resistor[2].GetResistencia() + resistor[4].GetResistencia());
     }
   }
 
@@ -401,10 +389,10 @@ public class StateController4 : MonoBehaviour
       SetarResistores();
       reduzidos[4] = false;
       Destroy(preRed3);
-      estadoAtivo = Estado.Estado2;
+      estadoAtivo = Estado.Estado1;
       reduzir = false;
     }
-    else if (estadoAtivo == Estado.Estado2)
+    else if (estadoAtivo == Estado.Estado1)
     {
       Destroy(circuito);
       circuito = Instantiate(original);
@@ -426,7 +414,7 @@ public class StateController4 : MonoBehaviour
       Destroy(preRed1E);
       estadoAtivo = Estado.Original;
     }
-    else if (estadoAtivo == Estado.Direita1)
+    else if (estadoAtivo == Estado.Direita2)
     {
       red1Direita.SetActive(false);
       Destroy(circuito);
@@ -441,7 +429,7 @@ public class StateController4 : MonoBehaviour
       Destroy(preRed1D);
       estadoAtivo = Estado.Original;
     }
-    else if (estadoAtivo == Estado.Esquerda1)
+    else if (estadoAtivo == Estado.Esquerda2)
     {
       red1Esquerda.SetActive(false);
       Destroy(circuito);
