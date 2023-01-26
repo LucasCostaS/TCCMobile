@@ -123,14 +123,6 @@ public class Eventos6 : MonoBehaviour
       return;
     }
 
-    /* if (inputtexto != null)
-     {
-         if (!(inputtexto.transform.parent.getcomponent<resistores3>().caixaativa)){
-             inputtexto.setactive(false);
-             controller.getcomponent<statecontroller3>().click = true;
-         }
-     }*/
-
     if (resistor != null)
     {
       if (duracaoToque < 0.2f)
@@ -160,21 +152,6 @@ public class Eventos6 : MonoBehaviour
             SnapPraPosicaoCorreta();
         }
       }
-
-      //bool reduzido = resistor.GetComponent<Resistores3>().reduzido;
-
-      /*if (reduzido == false && controller.GetComponent<StateController3>().click == true)
-      {
-          inputTexto = resistor.transform.GetChild(0).gameObject;
-          inputTexto.SetActive(true);
-          controller.GetComponent<StateController3>().click = false;
-      }*/
-
-      /*if (reduzido == true)
-      {
-          inputTexto = resistor.transform.GetChild(1).gameObject;
-          inputTexto.SetActive(true);
-      }*/
     }
     else
     {
@@ -185,8 +162,6 @@ public class Eventos6 : MonoBehaviour
     }
     resistor = null;
     duracaoToque = 0;
-    /*if (inputTexto != null)
-        inputTexto.transform.parent.GetComponent<Resistores3>().caixaAtiva = false;*/
   }
 
   private void DestruirObjeto()
@@ -199,6 +174,7 @@ public class Eventos6 : MonoBehaviour
   {
     GameObject sombra = resistor.GetComponent<Resistores6>().GetSombra();
     Vector3 pos = resistor.transform.parent.transform.position;
+    Quaternion rot = Quaternion.identity;
     RaycastHit2D[] results = new RaycastHit2D[2];
     int raycastHit2D = resistor.transform.GetComponent<BoxCollider2D>()
                                          .Raycast(Camera.main.transform.forward,
@@ -209,8 +185,8 @@ public class Eventos6 : MonoBehaviour
     {
       if (raycastHit2D < 1)
       {
-        ordemSnap.Add(resistor);
         pos = sombra.transform.position;
+        rot = sombra.transform.rotation;
       }
       else
         pos = snapAtual;
@@ -228,7 +204,9 @@ public class Eventos6 : MonoBehaviour
     }
 
     resistor.transform.position = pos;
+    resistor.transform.rotation = rot;
   }
+
 
   private void LimparResistencia()
   {
