@@ -9,7 +9,8 @@ public class StateController6 : MonoBehaviour
     Estado1,
     Estado3,
     Estado2,
-    Estado4Esquerda
+    Estado4Esquerda,
+    Estado4Direita
   }
 
   private float fps = 60f, newFPS;
@@ -17,7 +18,7 @@ public class StateController6 : MonoBehaviour
   private GameObject[] r = new GameObject[6];
   private Vector2[] sombras = new Vector2[6];
   private GameObject preRed4Esquerda, preRed4Direita, sombra1, sombra2, sombra3, sombra4, sombra5, sombra6, preRed2, preRed3, preRed1;
-  private GameObject red1, red2, red3, red4Esquerda;
+  private GameObject red1, red2, red3, red4Esquerda, red4Direita;
   private bool[] reduzidos = new bool[6];
   private Estado estadoAtivo = Estado.Original;
   public bool spawn = true, reduzir = true, trava = false;
@@ -49,6 +50,7 @@ public class StateController6 : MonoBehaviour
     red1 = circuito.transform.GetChild(1).gameObject;
     red3 = circuito.transform.GetChild(3).gameObject;
     red4Esquerda = circuito.transform.GetChild(4).gameObject;
+    red4Direita = circuito.transform.GetChild(5).gameObject;
   }
 
   private void SetarSombras()
@@ -128,6 +130,35 @@ public class StateController6 : MonoBehaviour
     ChecarReducao4Esquerda();
     if (estadoAtivo == Estado.Estado4Esquerda)
       Animacao4Esquerda();
+
+    ChecarReducao4Direita();
+    if (estadoAtivo == Estado.Estado4Direita)
+      Animacao4Direita();
+  }
+
+  private void Animacao4Direita()
+  {
+    trava = true;
+    spawn = false;
+
+    Transform res1 = red3.transform.GetChild(1).transform;
+    Transform res2 = red2.transform.GetChild(0).transform;
+
+    if (res1.position.x > res2.position.x)
+      res1.Translate(-5.12f / fps, 0f, 0f, Space.World);
+
+    if (res1.position.x <= res2.position.x)
+    {
+      red4Direita.SetActive(true);
+      red3.SetActive(false);
+      if (red2.activeInHierarchy)
+        red2.SetActive(false);
+      else
+        red4Esquerda.SetActive(false);
+
+      spawn = true;
+      trava = false;
+    }
   }
 
   private void Animacao4Esquerda()
@@ -149,7 +180,12 @@ public class StateController6 : MonoBehaviour
       red4Esquerda.transform.GetChild(6).gameObject.SetActive(true);
       red4Esquerda.transform.GetChild(7).gameObject.SetActive(true);
       red4Esquerda.transform.GetChild(8).gameObject.SetActive(true);
-      red4Esquerda.transform.GetChild(9).gameObject.SetActive(true);
+      if (!red4Direita.activeInHierarchy)
+      {
+        red4Esquerda.transform.GetChild(9).gameObject.SetActive(true);
+        red4Esquerda.transform.GetChild(10).gameObject.SetActive(true);
+        red4Esquerda.transform.GetChild(11).gameObject.SetActive(true);
+      }
       red2.SetActive(false);
       res1.gameObject.SetActive(false);
       spawn = true;
@@ -269,6 +305,9 @@ public class StateController6 : MonoBehaviour
       estadoAtivo = Estado.Estado2;
       preRed2 = Instantiate(circuito);
       preRed2.SetActive(false);
+      preRed2.transform.GetChild(1).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(1).GetChild(0).GetComponent<Resistores6>().GetResistencia());
+      if (reduzidos[3])
+        preRed2.transform.GetChild(3).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(3).GetChild(0).GetComponent<Resistores6>().GetResistencia());
       red2.SetActive(true);
       red2.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(resistor[2].GetResistencia() + red1.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia());
       red1.transform.GetChild(3).gameObject.SetActive(false);
@@ -292,6 +331,8 @@ public class StateController6 : MonoBehaviour
       circuito.transform.GetChild(0).GetChild(22).gameObject.SetActive(false);
       circuito.transform.GetChild(0).GetChild(24).gameObject.SetActive(false);
       circuito.transform.GetChild(0).GetChild(25).gameObject.SetActive(false);
+      if (reduzidos[3])
+        preRed1.transform.GetChild(3).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(3).GetChild(0).GetComponent<Resistores6>().GetResistencia());
       r[1].SetActive(false);
       r[4].SetActive(false);
       sombra2.gameObject.SetActive(false);
@@ -308,6 +349,10 @@ public class StateController6 : MonoBehaviour
       estadoAtivo = Estado.Estado3;
       preRed3 = Instantiate(circuito);
       preRed3.SetActive(false);
+      if (reduzidos[1])
+        preRed3.transform.GetChild(1).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(1).GetChild(0).GetComponent<Resistores6>().GetResistencia());
+      if (reduzidos[2])
+        preRed3.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().GetResistencia());
       reduzidos[3] = true;
       reduzidos[5] = true;
       r[3].SetActive(false);
@@ -325,6 +370,11 @@ public class StateController6 : MonoBehaviour
       estadoAtivo = Estado.Estado4Esquerda;
       preRed4Esquerda = Instantiate(circuito);
       preRed4Esquerda.SetActive(false);
+      preRed4Esquerda.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().GetResistencia());
+      if (reduzidos[3])
+        preRed4Esquerda.transform.GetChild(3).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(3).GetChild(0).GetComponent<Resistores6>().GetResistencia());
+      if (red4Direita.activeInHierarchy)
+        preRed4Esquerda.transform.GetChild(5).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(5).GetChild(0).GetComponent<Resistores6>().GetResistencia());
       reduzidos[0] = true;
       r[0].SetActive(false);
       sombra1.gameObject.SetActive(false);
@@ -333,7 +383,29 @@ public class StateController6 : MonoBehaviour
       circuito.transform.GetChild(0).GetChild(13).gameObject.SetActive(false);
       circuito.transform.GetChild(0).GetChild(14).gameObject.SetActive(false);
       red4Esquerda.SetActive(true);
-      red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1/(1/resistor[0].GetResistencia() + 1/red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
+      if (red4Direita.activeInHierarchy)
+        red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1/(1/resistor[0].GetResistencia() + 1/red4Direita.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
+      else
+        red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / (1 / resistor[0].GetResistencia() + 1 / red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
+    }
+  }
+
+  private void ChecarReducao4Direita()
+  {
+    if (reduzidos[2] && reduzidos[3] && reduzir && estadoAtivo != Estado.Estado4Direita)
+    {
+      estadoAtivo = Estado.Estado4Direita;
+      preRed4Direita = Instantiate(circuito);
+      preRed4Direita.SetActive(false);
+      preRed4Direita.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().GetResistencia());
+      preRed4Direita.transform.GetChild(3).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(3).GetChild(0).GetComponent<Resistores6>().GetResistencia());
+      if (reduzidos[3])
+        preRed4Direita.transform.GetChild(4).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(4).GetChild(0).GetComponent<Resistores6>().GetResistencia());
+      red4Direita.SetActive(true);
+      if (red4Esquerda.activeInHierarchy)
+        red4Direita.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / (1 / red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia() + 1 / red3.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
+      else
+        red4Direita.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / (1 / red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia() + 1 / red3.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
     }
   }
 
@@ -341,15 +413,11 @@ public class StateController6 : MonoBehaviour
   {
     if (estadoAtivo == Estado.Estado1)
     {
-      decimal aux = 0;
-      if (reduzidos[5] || reduzidos[3])
-        aux = red3.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia();
 
       Destroy(circuito);
-      circuito = Instantiate(preRed1);
+      circuito = preRed1;
       circuito.name = "Pecas";
       circuito.SetActive(true);
-      Destroy(preRed1);
 
       reduzidos[1] = false;
       reduzidos[4] = false;
@@ -361,9 +429,8 @@ public class StateController6 : MonoBehaviour
       SetarReducoes();
       SetarSombras();
 
-      if (red3.activeInHierarchy && aux != 0)
+      if (red3.activeInHierarchy)
       {
-        red3.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(aux);
         estadoAtivo = Estado.Estado3;
       }
       else
@@ -374,17 +441,11 @@ public class StateController6 : MonoBehaviour
     }
     else if (estadoAtivo == Estado.Estado2)
     {
-      decimal aux = 0;
-      if (reduzidos[5] || reduzidos[3])
-        aux = red3.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia();
-      preRed2.transform.GetChild(1).GetChild(0).GetComponent<Resistores6>().SetResistencia(red1.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia());
 
       Destroy(circuito);
-      circuito = Instantiate(preRed2);
+      circuito = preRed2;
       circuito.name = "Pecas";
-      circuito.transform.GetChild(1).GetChild(0).GetComponent<Resistores6>().SetResistencia(preRed2.transform.GetChild(1).GetChild(0).GetComponent<Resistores6>().GetResistencia());
       circuito.SetActive(true);
-      Destroy(preRed2);
 
       reduzidos[2] = false;
 
@@ -394,9 +455,8 @@ public class StateController6 : MonoBehaviour
       SetarReducoes();
       SetarSombras();
 
-      if (aux != 0)
+      if (reduzidos[3])
       {
-        red3.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(aux);
         estadoAtivo = Estado.Estado3;
       }
       else
@@ -407,17 +467,10 @@ public class StateController6 : MonoBehaviour
     }
     else if (estadoAtivo == Estado.Estado3)
     {
-      decimal aux = 0;
-      if (red2.activeInHierarchy)
-        aux = red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia();
-      else if (red1.activeInHierarchy)
-        aux = red1.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia();
-
       Destroy(circuito);
-      circuito = Instantiate(preRed3);
+      circuito = preRed3;
       circuito.name = "Pecas";
       circuito.SetActive(true);
-      Destroy(preRed3);
 
       reduzidos[3] = false;
       reduzidos[5] = false;
@@ -431,12 +484,10 @@ public class StateController6 : MonoBehaviour
 
       if (red2.activeInHierarchy)
       {
-        red2.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(aux);
         estadoAtivo = Estado.Estado2;
       }
       else if (red1.activeInHierarchy)
       {
-        red1.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(aux);
         estadoAtivo = Estado.Estado1;
       }
       else
@@ -446,53 +497,48 @@ public class StateController6 : MonoBehaviour
 
       reduzir = false;
     }
+    else if (estadoAtivo == Estado.Estado4Esquerda)
+    {
+      Destroy(circuito);
+      circuito = preRed4Esquerda;
+      circuito.name = "Pecas";
+      circuito.SetActive(true);
 
-    /*    else if (estadoAtivo == Estado.Direita2)
-        {
-          red2Direita.SetActive(false);
-          Destroy(circuito);
-          circuito = Instantiate(preRed2D);
+      reduzidos[0] = false;
 
-          circuito.SetActive(true);
-          Destroy(r[0]);
-          Destroy(r[3]);
-          reduzidos[0] = false;
-          reduzidos[3] = false;
+      Destroy(r[0]);
 
-          Destroy(preRed2D);
-          SetarReducoes();
-          SetarSombras();
+      SetarResistores();
+      SetarReducoes();
+      SetarSombras();
 
-          if (circuito.transform.GetChild(1).gameObject.activeInHierarchy)
-          {
-            estadoAtivo = Estado.Estado1;
-            Desfazer();
-          }
-          else
-          {
-            estadoAtivo = Estado.Original;
-          }
-        }*/
-    /*    else if (estadoAtivo == Estado.Esquerda2)
-        {
-          red2.SetActive(false);
-          Destroy(circuito);
-          circuito = Instantiate(preRed2);
+      if (reduzidos[3] || reduzidos[5])
+      {
+        estadoAtivo = Estado.Estado4Direita;
+      }
+      else
+      {
+        estadoAtivo = Estado.Estado2;
+      }
 
-          circuito.SetActive(true);
-          Destroy(r[1]);
-          reduzidos[1] = false;
+      reduzir = false;
+    }
+    else if (estadoAtivo == Estado.Estado4Direita)
+    {
+      Destroy(circuito);
+      circuito = preRed4Direita;
+      circuito.name = "Pecas";
+      circuito.SetActive(true);
 
-          Destroy(preRed2);
-          SetarReducoes();
-          SetarSombras();
+      SetarResistores();
+      SetarReducoes();
+      SetarSombras();
 
-          if (circuito.transform.GetChild(3).gameObject.activeInHierarchy)
-            estadoAtivo = Estado.Direita2;
-          else
-            estadoAtivo = Estado.Estado1;
+      if (red4Esquerda.activeInHierarchy)
+        estadoAtivo = Estado.Estado4Esquerda;
+      else
+        estadoAtivo = Estado.Estado2;
 
-          Desfazer();
-        }*/
+    }
   }
 }
