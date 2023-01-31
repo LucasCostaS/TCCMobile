@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class StateController6 : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class StateController6 : MonoBehaviour
   private GameObject red1, red2, red3, red4Esquerda, red4Direita, primeiro;
   private bool[] reduzidos = new bool[6];
   private Estado estadoAtivo = Estado.Original;
+  private List<Estado> sequencia = new List<Estado>(6);
   public bool spawn = true, reduzir = true, trava = false;
   public Eventos6 evento;
   public GameObject pecasCriadas, circuitoUI, stock, circuito, vitoria, enunciado;
@@ -42,6 +44,7 @@ public class StateController6 : MonoBehaviour
                               new Vector2(sombra5.transform.position.x, sombra5.transform.position.y),
                               new Vector2(sombra6.transform.position.x, sombra6.transform.position.y)};
     primeiro = null;
+    sequencia.Add(Estado.Original);
   }
 
   private void SetarReducoes()
@@ -135,6 +138,8 @@ public class StateController6 : MonoBehaviour
     ChecarReducao4Direita();
     if (estadoAtivo == Estado.Estado4Direita)
       Animacao4Direita();
+
+
   }
 
   private void Animacao4Direita()
@@ -160,6 +165,13 @@ public class StateController6 : MonoBehaviour
 
       spawn = true;
       trava = false;
+
+      if (sequencia.Count >= 6 && red4Direita.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia() == 2)
+      {
+        vitoria.SetActive(true);
+        stock.SetActive(false);
+        circuitoUI.transform.GetChild(1).gameObject.SetActive(false);
+      }
     }
   }
 
@@ -192,6 +204,13 @@ public class StateController6 : MonoBehaviour
       res1.gameObject.SetActive(false);
       spawn = true;
       trava = false;
+
+      if (sequencia.Count >= 6 && red4Direita.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia() == 2)
+      {
+        vitoria.SetActive(true);
+        stock.SetActive(false);
+        circuitoUI.transform.GetChild(1).gameObject.SetActive(false);
+      }
     }
   }
 
@@ -318,6 +337,7 @@ public class StateController6 : MonoBehaviour
       red1.transform.GetChild(3).gameObject.SetActive(false);
       r[2].SetActive(false);
       sombra3.SetActive(false);
+      sequencia.Add(Estado.Estado2);
     }
   }
 
@@ -345,6 +365,7 @@ public class StateController6 : MonoBehaviour
       sombra5.gameObject.SetActive(false);
       red1.SetActive(true);
       red1.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / (1 / resistor[1].GetResistencia() + 1 / resistor[4].GetResistencia()));
+      sequencia.Add(Estado.Estado1);
     }
   }
 
@@ -369,6 +390,7 @@ public class StateController6 : MonoBehaviour
       sombra6.gameObject.SetActive(false);
       red3.SetActive(true);
       red3.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia((resistor[3].GetResistencia() + resistor[5].GetResistencia()));
+      sequencia.Add(Estado.Estado3);
     }
   }
 
@@ -394,9 +416,11 @@ public class StateController6 : MonoBehaviour
       circuito.transform.GetChild(0).GetChild(14).gameObject.SetActive(false);
       red4Esquerda.SetActive(true);
       if (red4Direita.activeInHierarchy)
-        red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1/(1/resistor[0].GetResistencia() + 1/red4Direita.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
+        red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / ((1 / resistor[0].GetResistencia()) + (1 / red4Direita.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia())));
       else
-        red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / (1 / resistor[0].GetResistencia() + 1 / red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
+        red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / ((1 / resistor[0].GetResistencia()) + (1 / red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia())));
+      sequencia.Add(Estado.Estado4Esquerda);
+      
     }
   }
 
@@ -419,9 +443,10 @@ public class StateController6 : MonoBehaviour
         preRed4Direita.transform.GetChild(4).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(4).GetChild(0).GetComponent<Resistores6>().GetResistencia());
       red4Direita.SetActive(true);
       if (red4Esquerda.activeInHierarchy)
-        red4Direita.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / (1 / red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia() + 1 / red3.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
+        red4Direita.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / ((1 / red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()) + (1 / red3.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia())));
       else
-        red4Direita.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / (1 / red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia() + 1 / red3.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()));
+        red4Direita.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / ((1 / red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia()) + (1 / red3.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia())));
+      sequencia.Add(Estado.Estado4Direita);
     }
   }
 
@@ -445,14 +470,10 @@ public class StateController6 : MonoBehaviour
       SetarReducoes();
       SetarSombras();
 
-      if (red3.activeInHierarchy)
-      {
-        estadoAtivo = Estado.Estado3;
-      }
-      else
-      {
-        estadoAtivo = Estado.Original;
-      }
+      sequencia.RemoveAt(sequencia.Count - 1);
+
+      estadoAtivo = sequencia[sequencia.Count - 1];
+
       reduzir = false;
     }
     else if (estadoAtivo == Estado.Estado2)
@@ -473,14 +494,10 @@ public class StateController6 : MonoBehaviour
       SetarReducoes();
       SetarSombras();
 
-      if (reduzidos[3])
-      {
-        estadoAtivo = Estado.Estado3;
-      }
-      else
-      {
-        estadoAtivo = Estado.Estado1;
-      }
+      sequencia.RemoveAt(sequencia.Count - 1);
+
+      estadoAtivo = sequencia[sequencia.Count - 1];
+
       reduzir = false;
     }
     else if (estadoAtivo == Estado.Estado3)
@@ -502,22 +519,9 @@ public class StateController6 : MonoBehaviour
       SetarReducoes();
       SetarSombras();
 
-      if (red2.activeInHierarchy)
-      {
-        estadoAtivo = Estado.Estado2;
-      }
-      else if (red1.activeInHierarchy)
-      {
-        estadoAtivo = Estado.Estado1;
-      }
-      else if (red4Esquerda.activeInHierarchy)
-      {
-        estadoAtivo = Estado.Estado4Esquerda;
-      }
-      else
-      {
-        estadoAtivo = Estado.Original;
-      }
+      sequencia.RemoveAt(sequencia.Count - 1);
+
+      estadoAtivo = sequencia[sequencia.Count - 1];
 
       reduzir = false;
     }
@@ -536,24 +540,11 @@ public class StateController6 : MonoBehaviour
       SetarReducoes();
       SetarSombras();
 
-      Debug.Log(primeiro);
-      //VER QUEM ESTA ATIVOOOOOOOO
-      reduzir = false;
-      if (red4Direita.activeInHierarchy)
-      {
-        estadoAtivo = Estado.Estado4Direita;
-        Desfazer();
-      }
-      else if (primeiro == preRed2)
-      {
-        estadoAtivo = Estado.Estado3;
-        Desfazer();
-      }
-      else
-      {
-        estadoAtivo = Estado.Estado2;
-        Desfazer();
-      }
+      sequencia.RemoveAt(sequencia.Count - 1);
+
+      estadoAtivo = sequencia[sequencia.Count - 1];
+
+      Desfazer();
 
     }
     else if (estadoAtivo == Estado.Estado4Direita)
@@ -567,21 +558,11 @@ public class StateController6 : MonoBehaviour
       SetarReducoes();
       SetarSombras();
 
-      if (red4Esquerda.activeInHierarchy)
-      {
-        estadoAtivo = Estado.Estado4Esquerda;
-        Desfazer();
-      }
-      else if (primeiro == preRed2)
-      {
-        estadoAtivo = Estado.Estado3;
-        Desfazer();
-      }
-      else
-      {
-        estadoAtivo = Estado.Estado2;
-        Desfazer();
-      }
+      sequencia.RemoveAt(sequencia.Count - 1);
+
+      estadoAtivo = sequencia[sequencia.Count - 1];
+
+      Desfazer();
 
     }
   }

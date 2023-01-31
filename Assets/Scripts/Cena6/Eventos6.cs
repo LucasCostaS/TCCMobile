@@ -219,7 +219,6 @@ public class Eventos6 : MonoBehaviour
   {
     TMP_Text valor = circuitoUI.transform.GetChild(0).GetComponent<TMP_Text>();
     string texto = (resistor.GetComponent<Resistores6>().GetResistencia().ToString()) + " Ohm";
-    Debug.Log(texto);
 
     valor.SetText(texto);
     //if (snapAtual == resistor.transform.position)
