@@ -1,6 +1,5 @@
-using System;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class StateController6 : MonoBehaviour
 {
@@ -138,8 +137,6 @@ public class StateController6 : MonoBehaviour
     ChecarReducao4Direita();
     if (estadoAtivo == Estado.Estado4Direita)
       Animacao4Direita();
-
-
   }
 
   private void Animacao4Direita()
@@ -186,7 +183,7 @@ public class StateController6 : MonoBehaviour
     if (res1.position.x < res2.position.x)
       res1.Translate(5.12f / fps, 0f, 0f, Space.World);
 
-    if(res1.position.x >= res2.position.x)
+    if (res1.position.x >= res2.position.x)
     {
       red4Esquerda.transform.GetChild(0).gameObject.SetActive(true);
       red4Esquerda.transform.GetChild(4).gameObject.SetActive(true);
@@ -235,7 +232,7 @@ public class StateController6 : MonoBehaviour
     if (res1.localRotation.z < res2.localRotation.z)
       res1.Rotate(0f, 0f, 90f / fps, Space.World);
     else
-      res1.localRotation.SetEulerAngles(0f, 0f, res2.localRotation.z);
+      res1.localRotation.eulerAngles.Set(0f, 0f, res2.localRotation.z);
 
     if (res1.localPosition == res2.localPosition && res1.localRotation.z >= res2.localPosition.z)
     {
@@ -402,7 +399,7 @@ public class StateController6 : MonoBehaviour
       preRed4Esquerda = Instantiate(circuito);
       preRed4Esquerda.SetActive(false);
       preRed4Esquerda.name = "4esquerda";
-      preRed4Esquerda.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().GetResistencia());   
+      preRed4Esquerda.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(2).GetChild(0).GetComponent<Resistores6>().GetResistencia());
       if (red4Direita.activeInHierarchy)
         preRed4Esquerda.transform.GetChild(5).GetChild(0).GetComponent<Resistores6>().SetResistencia(circuito.transform.GetChild(5).GetChild(0).GetComponent<Resistores6>().GetResistencia());
       else if (reduzidos[3])
@@ -420,7 +417,6 @@ public class StateController6 : MonoBehaviour
       else
         red4Esquerda.transform.GetChild(0).GetComponent<Resistores6>().SetResistencia(1 / ((1 / resistor[0].GetResistencia()) + (1 / red2.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia())));
       sequencia.Add(Estado.Estado4Esquerda);
-      
     }
   }
 
@@ -454,7 +450,6 @@ public class StateController6 : MonoBehaviour
   {
     if (estadoAtivo == Estado.Estado1)
     {
-
       Destroy(circuito);
       circuito = preRed1;
       circuito.name = "Pecas";
@@ -478,7 +473,6 @@ public class StateController6 : MonoBehaviour
     }
     else if (estadoAtivo == Estado.Estado2)
     {
-
       Destroy(circuito);
       circuito = preRed2;
       circuito.name = "Pecas";
@@ -545,7 +539,6 @@ public class StateController6 : MonoBehaviour
       estadoAtivo = sequencia[sequencia.Count - 1];
 
       Desfazer();
-
     }
     else if (estadoAtivo == Estado.Estado4Direita)
     {
@@ -563,7 +556,6 @@ public class StateController6 : MonoBehaviour
       estadoAtivo = sequencia[sequencia.Count - 1];
 
       Desfazer();
-
     }
   }
 }

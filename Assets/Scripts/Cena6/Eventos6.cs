@@ -8,8 +8,8 @@ public class Eventos6 : MonoBehaviour
   private EventSystem m_EventSystem;
 
   private Touch toque;
-  private bool inicioToque, fimToque, movimentoToque, tocando, trava = false;
-  private Vector3 touchPosWorld, offset, snapAtual, escalaAtual;
+  private bool inicioToque, fimToque, movimentoToque, tocando;
+  private Vector3 touchPosWorld, offset, snapAtual;
   private Vector2 touchPosWorld2D;
   private GameObject resistor;
   private float duracaoToque;
@@ -206,7 +206,6 @@ public class Eventos6 : MonoBehaviour
     resistor.transform.position = pos;
     resistor.transform.rotation = rot;
   }
-
 
   private void LimparResistencia()
   {
