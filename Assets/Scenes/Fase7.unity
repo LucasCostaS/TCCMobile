@@ -905,7 +905,7 @@ MonoBehaviour:
   circuito: {fileID: 2050817547}
   vitoria: {fileID: 1983076977}
   enunciado: {fileID: 83663785}
-  prefab: {fileID: 7981329923024030995, guid: b3dbc1aa3e33b6b46843f079d179c3b3, type: 3}
+  prefab: {fileID: 6950582785192525489, guid: 5d7449e76caa07c48926a21169a54f8c, type: 3}
   pai: {fileID: 1540137040}
   pecaCriada: {fileID: 0}
   dragging: 0
@@ -1040,7 +1040,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1910565665}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &204065672
 SpriteRenderer:
@@ -1621,7 +1621,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1910565665}
-  m_RootOrder: 11
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -53.39}
 --- !u!212 &307400006
 SpriteRenderer:
@@ -1953,7 +1953,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1910565665}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &375020909
 SpriteRenderer:
@@ -2754,7 +2754,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1910565665}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &675883081
 SpriteRenderer:
@@ -3362,9 +3362,9 @@ GameObject:
   - component: {fileID: 761171135}
   - component: {fileID: 761171134}
   - component: {fileID: 761171133}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: resistor
-  m_TagString: Untagged
+  m_TagString: Reduzido
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4487,9 +4487,9 @@ GameObject:
   - component: {fileID: 1348688100}
   - component: {fileID: 1348688099}
   - component: {fileID: 1348688098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: resistor
-  m_TagString: Untagged
+  m_TagString: Reduzido
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4501,14 +4501,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348688096}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.12, y: 10.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1018873194}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1348688098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4854,7 +4854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1910565665}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1424873869
 SpriteRenderer:
@@ -5345,7 +5345,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1910565665}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &1554208829
 SpriteRenderer:
@@ -6674,8 +6674,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StateController6, Assembly-CSharp
+      - m_Target: {fileID: 1596918438}
+        m_TargetAssemblyTypeName: StateController7, Assembly-CSharp
         m_MethodName: Desfazer
         m_Mode: 1
         m_Arguments:
@@ -6880,7 +6880,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1910565665}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &1852688179
 SpriteRenderer:
@@ -7265,7 +7265,6 @@ Transform:
   - {fileID: 932789060}
   - {fileID: 1458776779}
   - {fileID: 1453800289}
-  - {fileID: 307400005}
   - {fileID: 675883080}
   - {fileID: 1852688178}
   - {fileID: 375020908}
@@ -7273,6 +7272,7 @@ Transform:
   - {fileID: 1554208828}
   - {fileID: 2003957719}
   - {fileID: 204065671}
+  - {fileID: 307400005}
   - {fileID: 69307625}
   m_Father: {fileID: 2050817549}
   m_RootOrder: 0
@@ -7482,7 +7482,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1910565665}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &2003957720
 SpriteRenderer:
@@ -7714,7 +7714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050817547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.25, y: 0, z: 0}
+  m_LocalPosition: {x: 3.59, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
