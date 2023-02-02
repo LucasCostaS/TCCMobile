@@ -180,7 +180,7 @@ public class StateController4 : MonoBehaviour
     if (res1.localRotation.eulerAngles.z < 90f)
       res1.Rotate(0f, 0f, 90f / (fps * 0.75f), Space.World);
     else
-      res1.rotation.SetEulerAngles(0f, 0f, 90f);
+      res1.rotation.eulerAngles.Set(0f, 0f, 90f);
 
     if (res1.localPosition.y < -5.12f)
       res1.Translate((5.12f / fps), 0f, 0f, Space.World);
