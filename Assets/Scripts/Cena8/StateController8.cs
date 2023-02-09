@@ -192,27 +192,28 @@ public class StateController8 : MonoBehaviour
     trava = true;
     spawn = false;
 
-    Transform res1 = red4.transform.GetChild(0).transform;
-    Transform res2 = red3.transform.GetChild(0).transform;
+    Transform res1 = Red[3].transform.GetChild(0).transform;
+    Transform res2 = Sombra[3].transform;
 
-    if (res1.position.x > res2.position.x)
-      res1.Translate(-5.12f / fps, 0f, 0f, Space.World);
+    if (res1.localPosition.x < res2.localPosition.x)
+      res1.Translate((7.68f / fps), 0f, 0f, Space.World);
 
-    if (res1.rotation.z < res2.rotation.z)
-      res1.Rotate(0f, 0f, (90f + 53.39f) / fps, Space.World);
+    if (res1.localPosition.y < res2.localPosition.y)
+      res1.Translate(0f, (2.56f / fps), 0f, Space.World);
 
-    if (res1.position.x <= res2.position.x && res1.rotation.z >= res2.rotation.z)
+    if (res1.localPosition.y >= res2.localPosition.y && res1.localPosition.x >= res2.localPosition.x)
     {
       res1.localPosition = res2.localPosition;
-      res1.rotation = res2.rotation;
-
-      circuito.transform.GetChild(0).GetChild(18).gameObject.SetActive(false);
-      circuito.transform.GetChild(0).GetChild(19).gameObject.SetActive(false);
-
-      red3.SetActive(false);
+      circuito.transform.GetChild(0).GetChild(10).gameObject.SetActive(false);
+      res2.gameObject.SetActive(false);
+      
+      if(reduzidos[7])
+        Red[2].SetActive(false);
+      else
+        r[6].SetActive(false);
+      
       spawn = true;
       trava = false;
-    }
   }
 
   private void Animacao3()
@@ -237,9 +238,13 @@ public class StateController8 : MonoBehaviour
     {
       res1.localPosition = res2.localPosition;
       circuito.transform.GetChild(0).GetChild(9).gameObject.SetActive(false);
-      r[2].SetActive(false);
-      //red3.transform.GetChild(1).gameObject.SetActive(true);
       res2.gameObject.SetActive(false);
+      
+      if(reduzidos[3])
+        Red[3].SetActive(false);
+      else
+        r[6].SetActive(false);
+      
       spawn = true;
       trava = false;
     }
@@ -280,9 +285,6 @@ public class StateController8 : MonoBehaviour
       spawn = true;
       trava = false;
     }
-    else
-    {
-    }
   }
 
   private void Animacao2()
@@ -306,10 +308,8 @@ public class StateController8 : MonoBehaviour
       if (Red[0].activeInHierarchy)
         Red[0].SetActive(false);
       else
-      {
-        reduzidos[1] = true;
         r[1].SetActive(false);
-      }
+      
       r[2].SetActive(false);
       spawn = true;
       trava = false;
