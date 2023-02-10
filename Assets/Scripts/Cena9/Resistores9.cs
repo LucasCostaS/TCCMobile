@@ -1,7 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
-public class Resistores8 : MonoBehaviour
+
+public class Resistores9 : MonoBehaviour
 {
   private Decimal resistencia;
   private GameObject criador, sombra;
