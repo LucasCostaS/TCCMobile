@@ -6,6 +6,20 @@ public class Botoes : MonoBehaviour
 {
   public GameObject menuInicial, menuFases, Botao;
 
+  private void Update()
+  {
+    if (Application.platform == RuntimePlatform.Android)
+    {
+      if (Input.GetKey(KeyCode.Escape))
+      {
+        if (SceneManager.GetActiveScene().buildIndex > 0)
+          VoltarMenu();
+        else
+          BotaoSair();
+      }
+    }
+  }
+
   public void BotaoJogar()
   {
     menuInicial.SetActive(false);
