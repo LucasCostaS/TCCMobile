@@ -92,7 +92,7 @@ public class StateController4 : MonoBehaviour
     return ++i;
   }
 
-  private void InicializarTelas()
+  public void InicializarTelas()
   {
     stock.SetActive(false);
     circuito.SetActive(false);
@@ -160,7 +160,7 @@ public class StateController4 : MonoBehaviour
       red3.SetActive(true);
     }
 
-    if (red3.transform.GetChild(0).GetComponent<Resistores4>().GetResistencia() == 4)
+    if (red3.transform.GetChild(0).GetComponent<Resistores4>().GetResistencia() == 4m)
     {
       vitoria.SetActive(true);
       stock.SetActive(false);

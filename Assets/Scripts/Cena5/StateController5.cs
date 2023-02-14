@@ -151,7 +151,7 @@ public class StateController5 : MonoBehaviour
       red3.SetActive(true);
     }
 
-    if (red3.activeInHierarchy && red3.transform.GetChild(0).GetComponent<Resistores5>().GetResistencia() == 1)
+    if (red3.activeInHierarchy && red3.transform.GetChild(0).GetComponent<Resistores5>().GetResistencia() == 1m)
     {
       vitoria.SetActive(true);
       stock.SetActive(false);
