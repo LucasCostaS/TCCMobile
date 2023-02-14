@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class StateController3 : MonoBehaviour
@@ -175,7 +176,8 @@ public class StateController3 : MonoBehaviour
 
   private void checarVitoria()
   {
-    if (resistor1.resistencia == 3)
+    
+    if (Math.Round(resistor1.resistencia, 2, MidpointRounding.ToEven) == 3f)
     {
       vitoria.SetActive(true);
       if (anim)

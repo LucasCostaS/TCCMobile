@@ -163,7 +163,7 @@ public class StateController6 : MonoBehaviour
       spawn = true;
       trava = false;
 
-      if (sequencia.Count >= 6 && red4Direita.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia() == 2)
+      if (sequencia.Count >= 6 && red4Direita.transform.GetChild(0).GetComponent<Resistores6>().GetResistencia() == 2m)
       {
         vitoria.SetActive(true);
         stock.SetActive(false);

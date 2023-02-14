@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ public class Resistores3 : MonoBehaviour
 
   private void Update()
   {
-    transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TMP_Text>().SetText("Resistencia: " + GetComponent<Resistores3>().resistencia.ToString());
+    transform.GetChild(1).transform.GetChild(0).gameObject.GetComponent<TMP_Text>().SetText("Resistencia: " + Math.Round(GetComponent<Resistores3>().resistencia, 2, MidpointRounding.ToEven).ToString());
   }
 
   public void setarResistencia(string texto)
