@@ -21,7 +21,7 @@ public class StateController5 : MonoBehaviour
   private Estado estadoAtivo = Estado.Original;
 
   public bool spawn = true, reduzir = true, trava = false;
-  public Eventos5 evento;
+  public EventoPC5 evento;
   public GameObject pecasCriadas, sombra1, sombra2, sombra3, sombra4, sombra5, circuitoUI, stock, circuito, vitoria, enunciado;
 
   private void Start()

@@ -23,7 +23,7 @@ public class StateController9 : MonoBehaviour
   private List<GameObject> PreRed = new List<GameObject>();
   private List<GameObject> Sombra = new List<GameObject>();
   public bool spawn = true, reduzir = true, trava = false;
-  public Eventos9 evento;
+  public EventoPC9 evento;
   public GameObject pecasCriadas, circuitoUI, stock, circuito, vitoria, enunciado;
 
   private void Start()

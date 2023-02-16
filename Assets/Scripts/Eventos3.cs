@@ -16,19 +16,9 @@ public class Eventos3 : MonoBehaviour
 
   private void Update()
   {
-    tocando = (Input.touchCount > 0);
-    if (tocando)
-    {
-      ReceberToque();
-      AcoesDoToque();
-    }
-  }
-
-  private void AcoesDoToque()
-  {
-    if (inicioToque)
+    if (Input.GetMouseButtonDown(0))
       InicioDeToque();
-    if (fimToque)
+    if (Input.GetMouseButtonUp(0))
       FimDeToque();
   }
 
@@ -46,13 +36,6 @@ public class Eventos3 : MonoBehaviour
     SetarObjeto();
   }
 
-  private void ReceberToque()
-  {
-    toque = Input.GetTouch(0);
-    inicioToque = (toque.phase == TouchPhase.Began);
-    fimToque = (toque.phase == TouchPhase.Ended);
-  }
-
   private void SetarObjeto()
   {
     RaycastHit2D hitInformation = Physics2D.Raycast(touchPosWorld2D, Camera.main.transform.forward);
@@ -64,7 +47,7 @@ public class Eventos3 : MonoBehaviour
 
   private void PegarPosicaoNoMundo()
   {
-    touchPosWorld = Camera.main.ScreenToWorldPoint(new Vector3(toque.position.x, toque.position.y, 0f));
+    touchPosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
   }
 

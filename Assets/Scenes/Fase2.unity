@@ -705,7 +705,7 @@ ScaleConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_ScaleAtRest: {x: 1, y: 1, z: 1}
-  m_ScaleOffset: {x: 43.91733, y: 43.91733, z: 43.91733}
+  m_ScaleOffset: {x: 44.818176, y: 44.818176, z: 44.818176}
   m_AffectScalingX: 1
   m_AffectScalingY: 1
   m_AffectScalingZ: 0
@@ -1272,6 +1272,7 @@ MonoBehaviour:
   menuInicial: {fileID: 0}
   menuFases: {fileID: 0}
   Botao: {fileID: 0}
+  state: {fileID: 0}
 --- !u!114 &559836370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1875,7 +1876,7 @@ ScaleConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_ScaleAtRest: {x: 1, y: 1, z: 1}
-  m_ScaleOffset: {x: 43.91733, y: 43.91733, z: 43.91733}
+  m_ScaleOffset: {x: 44.818176, y: 44.818176, z: 44.818176}
   m_AffectScalingX: 1
   m_AffectScalingY: 1
   m_AffectScalingZ: 0
@@ -2242,6 +2243,7 @@ MonoBehaviour:
   pecas: {fileID: 288946074}
   stock: {fileID: 1232925427}
   posicaoSnap: {fileID: 0}
+  evento: {fileID: 42727953}
 --- !u!1 &1688495655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,6 +2401,7 @@ MonoBehaviour:
   menuInicial: {fileID: 0}
   menuFases: {fileID: 0}
   Botao: {fileID: 0}
+  state: {fileID: 0}
 --- !u!114 &1778839000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,7 +2754,7 @@ ScaleConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_ScaleAtRest: {x: 1, y: 1, z: 1}
-  m_ScaleOffset: {x: 43.91733, y: 43.91733, z: 43.91733}
+  m_ScaleOffset: {x: 44.818176, y: 44.818176, z: 44.818176}
   m_AffectScalingX: 1
   m_AffectScalingY: 1
   m_AffectScalingZ: 0

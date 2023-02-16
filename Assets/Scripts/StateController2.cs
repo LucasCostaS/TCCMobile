@@ -9,6 +9,7 @@ public class StateController2 : MonoBehaviour
   private bool[] posicaoCorreta = new bool[16];
   public GameObject vitoria, sombra, pecas, stock;
   public PosicaoSnap posicaoSnap;
+  public Eventos2 evento;
 
   private void Start()
   {
@@ -124,6 +125,7 @@ public class StateController2 : MonoBehaviour
       vitoria.SetActive(true);
       sombra.SetActive(false);
       stock.SetActive(false);
+      evento.enabled = false;
       int k = pecas.transform.childCount;
       for (int i = 0; i < k; i++)
       {

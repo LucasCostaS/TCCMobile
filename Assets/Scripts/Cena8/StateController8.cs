@@ -26,7 +26,7 @@ public class StateController8 : MonoBehaviour
   private List<GameObject> PreRed = new List<GameObject>();
   private List<GameObject> Sombra = new List<GameObject>();
   public bool spawn = true, reduzir = true, trava = false;
-  public Eventos8 evento;
+  public EventoPC8 evento;
   public GameObject pecasCriadas, circuitoUI, stock, circuito, vitoria, enunciado;
 
   private void Start()

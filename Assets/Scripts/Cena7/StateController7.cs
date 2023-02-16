@@ -24,7 +24,7 @@ public class StateController7 : MonoBehaviour
   private Estado estadoAtivo = Estado.Original;
   private List<Estado> sequencia = new List<Estado>(6);
   public bool spawn = true, reduzir = true, trava = false;
-  public Eventos7 evento;
+  public EventoPC7 evento;
   public GameObject pecasCriadas, circuitoUI, stock, circuito, vitoria, enunciado;
 
   private void Start()

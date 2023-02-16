@@ -43,37 +43,19 @@ public class Eventos2 : MonoBehaviour
 
   private void Update()
   {
-    tocando = (Input.touchCount > 0);
-    if (tocando)
-    {
-      ReceberToque();
-      AcoesDoToque();
-    }
-  }
-
-  private void ReceberToque()
-  {
-    toque = Input.GetTouch(0);
-    inicioToque = (toque.phase == TouchPhase.Began);
-    fimToque = (toque.phase == TouchPhase.Ended || toque.phase == TouchPhase.Canceled);
-    movimentoToque = (toque.phase == TouchPhase.Moved);
-    duracaoToque += Time.deltaTime;
-  }
-
-  private void AcoesDoToque()
-  {
-    InicioDeToque();
-
-    ToqueDrag();
-
-    FimDeToque();
+    if (Input.GetMouseButtonDown(0))
+      InicioDeToque();
+    if (Input.GetMouseButton(0))
+      ToqueDrag();
+    if (Input.GetMouseButtonUp(0))
+      FimDeToque();
   }
 
   private void InicioDeToque()
   {
-    if (inicioToque)
-    {
-      PegarPosicaoNoMundo();
+
+    duracaoToque += Time.deltaTime;
+    PegarPosicaoNoMundo();
 
       SetarObjeto();
 
@@ -84,23 +66,22 @@ public class Eventos2 : MonoBehaviour
           offset = objeto.transform.position - touchPosWorld;
         dragging = true;
       }
-    }
+    
   }
 
   private void FimDeToque()
   {
-    if (fimToque)
-    {
+
       gradeX = posicaoSnap.gradeX;
       gradeY = posicaoSnap.gradeY;
       dragging = false;
 
       if (objeto != null)
       {
-        if (duracaoToque < 0.2f && stock)
+        if (duracaoToque < 0.1f && stock)
           SpawnPeca();
 
-        if (duracaoToque < 0.2f && paiPeca)
+        if (duracaoToque < 0.1f && paiPeca)
           Rotacao();
 
         if (colisorLixo.IsTouching(objeto.GetComponent<BoxCollider2D>()))
@@ -135,13 +116,13 @@ public class Eventos2 : MonoBehaviour
 
             PosicionarNaGrade();
           }
-        }
+        
       }
-      duracaoToque = 0.0f;
-      objeto = null;
       posX = 0;
       posY = 0;
     }
+    duracaoToque = 0.0f;
+    objeto = null;
   }
 
   private void PosicionarNaGrade()
@@ -167,7 +148,8 @@ public class Eventos2 : MonoBehaviour
 
   private void ToqueDrag()
   {
-    if (dragging && movimentoToque)
+    duracaoToque += Time.deltaTime;
+    if (dragging && objeto != null)
     {
       PegarPosicaoNoMundo();
       objeto.transform.position = touchPosWorld + offset;
@@ -216,14 +198,14 @@ public class Eventos2 : MonoBehaviour
       dragnDrop = objeto.GetComponent<DragnDropStock>();
       prefab = dragnDrop.prefab;
       pai = dragnDrop.pai;
-      Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity, pai.transform);
+      Instantiate(prefab, new Vector3(0f, 0, 0), Quaternion.identity, pai.transform);
       controlador.spawn = false;
     }
   }
 
   private void PegarPosicaoNoMundo()
   {
-    touchPosWorld = Camera.main.ScreenToWorldPoint(new Vector3(toque.position.x, toque.position.y, 0f));
+    touchPosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
   }
 

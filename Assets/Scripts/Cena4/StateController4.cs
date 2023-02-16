@@ -20,7 +20,7 @@ public class StateController4 : MonoBehaviour
   private Estado estadoAtivo = Estado.Original;
 
   public bool spawn = true, reduzir = true, trava = false;
-  public Eventos4 evento;
+  public EventoPC4 evento;
   public GameObject pecasCriadas, circuitoUI, stock, circuito, vitoria, enunciado;
 
   private void Start()

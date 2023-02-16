@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class EventoPC : MonoBehaviour
+public class EventoPC7 : MonoBehaviour
 {
   private EventSystem m_EventSystem;
 
@@ -13,7 +13,7 @@ public class EventoPC : MonoBehaviour
   private Vector2 touchPosWorld2D;
   private GameObject resistor;
   private float duracaoToque;
-  private StateController10 state;
+  private StateController7 state;
   private Collider2D colisorLixo;
   public List<GameObject> ordemSnap = new List<GameObject>();
 
@@ -23,7 +23,7 @@ public class EventoPC : MonoBehaviour
   private void OnEnable()
   {
     m_EventSystem = EventSystem.current;
-    state = controller.GetComponent<StateController10>();
+    state = controller.GetComponent<StateController7>();
     colisorLixo = circuitoUI.transform.GetChild(1).GetComponent<BoxCollider2D>();
   }
 
@@ -53,8 +53,8 @@ public class EventoPC : MonoBehaviour
     if (resistor != null && resistor.CompareTag("Resistor"))
     {
       offset = resistor.transform.position - touchPosWorld;
-      snapAtual = transform.position;
-    } 
+      snapAtual = resistor.transform.position;
+    }
 
     dragging = true;
     duracaoToque += Time.deltaTime;
@@ -66,7 +66,7 @@ public class EventoPC : MonoBehaviour
     if (resistor != null && resistor.CompareTag("Resistor"))
     {
       PegarPosicaoNoMundo();
-      resistor.GetComponent<Resistores10>().SetPosicao(touchPosWorld + offset);
+      resistor.GetComponent<Resistores7>().SetPosicao(touchPosWorld + offset);
       state.reduzir = true;
       if (Physics2D.IsTouching(colisorLixo, resistor.GetComponent<BoxCollider2D>()))
         colisorLixo.gameObject.transform.localScale = new Vector3(26f, 26f, 1f);
@@ -160,7 +160,7 @@ public class EventoPC : MonoBehaviour
 
   private void SnapPraPosicaoCorreta()
   {
-    GameObject sombra = resistor.GetComponent<Resistores10>().GetSombra();
+    GameObject sombra = resistor.GetComponent<Resistores7>().GetSombra();
     Vector3 pos = resistor.transform.parent.transform.position;
     Quaternion rot = Quaternion.identity;
     RaycastHit2D[] results = new RaycastHit2D[2];
@@ -205,7 +205,7 @@ public class EventoPC : MonoBehaviour
   private void MostrarResistencia()
   {
     TMP_Text valor = circuitoUI.transform.GetChild(0).GetComponent<TMP_Text>();
-    string texto = (resistor.GetComponent<Resistores10>().GetResistencia().ToString()) + " Ohm";
+    string texto = (resistor.GetComponent<Resistores7>().GetResistencia().ToString()) + " Ohm";
 
     valor.SetText(texto);
     //if (snapAtual == resistor.transform.position)
@@ -218,7 +218,7 @@ public class EventoPC : MonoBehaviour
     {
       pecaCriada = Instantiate(prefab, pai.transform.position, Quaternion.identity, pai.transform);
 
-      pecaCriada.GetComponent<Resistores10>().SetCriador(resistor);
+      pecaCriada.GetComponent<Resistores7>().SetCriador(resistor);
 
       state.spawn = false;
 
