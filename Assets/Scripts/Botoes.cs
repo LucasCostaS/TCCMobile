@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Botoes : MonoBehaviour
 {
-  public GameObject menuInicial, menuFases, Botao;
+  public GameObject menuInicial, menuFases, Botao, state;
 
   private void Update()
   {
@@ -17,6 +17,17 @@ public class Botoes : MonoBehaviour
         else
           BotaoSair();
       }
+    }
+    else if (Application.platform == RuntimePlatform.WindowsPlayer)
+    {
+      if (Input.GetKey(KeyCode.Escape))
+      {
+        if (SceneManager.GetActiveScene().buildIndex > 0)
+          VoltarMenu();
+        else
+          BotaoSair();
+      }
+
     }
   }
 
@@ -40,5 +51,10 @@ public class Botoes : MonoBehaviour
   public void BotaoSair()
   {
     Application.Quit();
+  }
+
+  public void desfazer()
+  {
+    state.GetComponent<StateController10>().Desfazer();
   }
 }

@@ -24,7 +24,7 @@ public class StateController10 : MonoBehaviour
   private List<GameObject> PreRed = new List<GameObject>();
   private List<GameObject> Sombra = new List<GameObject>();
   public bool spawn = true, reduzir = true, trava = false, parte1 = true;
-  public Eventos10 evento;
+  public EventoPC evento;
   public GameObject pecasCriadas, circuitoUI, stock, circuito, vitoria, enunciado;
 
   private void Start()
@@ -110,15 +110,6 @@ public class StateController10 : MonoBehaviour
     enunciado.SetActive(true);
   }
 
-  public void teste()
-  {
-    stock.SetActive(false);
-    circuito.SetActive(false);
-    vitoria.SetActive(false);
-    circuitoUI.SetActive(false);
-    enunciado.SetActive(true);
-  }
-
   private void Update()
   {
     VelocidadeAnimacao();
@@ -187,7 +178,7 @@ public class StateController10 : MonoBehaviour
         vitoria.SetActive(true);
         stock.SetActive(false);
         circuitoUI.transform.GetChild(1).gameObject.SetActive(false);
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+       // gameObject.transform.GetChild(0).gameObject.SetActive(false);
       }
     }
   }
